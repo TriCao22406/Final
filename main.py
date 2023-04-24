@@ -1,8 +1,7 @@
 """
 module run app
 """
-from GUI_Route import *
-from CoCauToChuc import *
+from The.CoCauToChuc import *
 
 if __name__ == "__main__":
     app =App()
