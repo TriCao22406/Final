@@ -3,6 +3,7 @@ from GUI_Route import *
 
 class CoCau():
     def __init__(self):
-        self.mainframe = MainFrame()
+        mainframe = MainFrame()
+
 
 
