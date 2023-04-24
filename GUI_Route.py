@@ -9,7 +9,7 @@ class App(tk.Tk):
 
         self.title("Maxwell Co. Ltd")
         self.state("zoomed")
-
+        self.resizable(False,False)
 
 #Frame chính chứa tất cả widget của thẻ (để xóa một lần cho dễ)
 class MainFrame(tk.Frame):
