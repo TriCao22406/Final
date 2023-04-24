@@ -15,4 +15,4 @@ class App(tk.Tk):
 class MainFrame(tk.Frame):
     def __init__(self):
         super().__init__()
-        self.pack(fill=BOTH, )
+        self.pack(fill="both", expand=1)
