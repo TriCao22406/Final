@@ -9,12 +9,10 @@ class App(tk.Tk):
 
         self.title("Maxwell Co. Ltd")
         self.state("zoomed")
+        self.resizable(False,False)
 
-        import Login
-
+#Frame chính chứa tất cả widget của thẻ (để xóa một lần cho dễ)
 class MainFrame(tk.Frame):
-    def __init__(self):
+    def __init__(self, master=None, cnf={}, **kw):
         super().__init__()
         self.pack(fill="both", expand=1)
-
-
