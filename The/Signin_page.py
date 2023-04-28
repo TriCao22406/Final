@@ -104,10 +104,14 @@ class Dangnhap:
     def kiemtrathongtindangnhap():
         t= Dangnhap.tim_taikhoan(user, password)
         if t == 0:
-            messagebox.showinfo("Invalid", "invalid password")
+            messagebox.showerror("Invalid", "invalid password")
             flag= 0
         elif t == -1:
             messagebox.showerror('Invalid', "Invalid Username and password")
+        else:
+            messagebox.showinfo("Sign in","Sucessfully")
+
+
 
 # tao dong hoi "Do you have an account?" va sign in
 

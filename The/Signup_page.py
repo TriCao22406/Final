@@ -3,7 +3,7 @@ from PIL import ImageTk, Image
 from tkinter import messagebox
 import csv
 
-
+# Để tạm thời và chưa chỉnh thui nha mí bà
 def login_page():
     signup_windown.destroy()
     import signin
