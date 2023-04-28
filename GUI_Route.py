@@ -15,5 +15,5 @@ class App(tk.Tk):
 class MainFrame(tk.Frame):
     def __init__(self, master=None, cnf={}, **kw):
         super().__init__()
+        self.Button("Trang thông tin cá nhân.py")
         self.pack(fill="both", expand=1)
-
