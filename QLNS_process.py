@@ -9,3 +9,7 @@ class Nhanvien_TTca_nhan():  # class này cần def them hàm get image của nh
       self.diachi = diachi
       self.hocvan = hocvan
       # class này có cần def getimage vào đề show infor tren trang cá nhân không nhỉ
+class  thongtinluong(Nhanvien_TTca_nhan):
+   def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,bophan,vitri,noilamviec,Bacluong,Phucap,BHYT,BHXH,Trocap,Luongthang13):
+      super().__init__(manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan)
+      self.bophan=
