@@ -1,10 +1,10 @@
 """
 module run app
 """
-from The.CoCauToChuc import *
+from GUI_Route import App
 
 if __name__ == "__main__":
-    app =App()
+    app = App()
     app.mainloop()
 
 

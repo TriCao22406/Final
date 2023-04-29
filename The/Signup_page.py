@@ -11,17 +11,17 @@ def login_page():
 
 
 def sucess(a, b):
-    e = r"data.csv"
+    e = r"D:\Final\Final\The\data.csv"
     with open(e, newline="", mode='r') as csv_file:
         got_reader = csv.reader(csv_file, delimiter=",",quoting=csv.QUOTE_NONE)
         for r in got_reader:
-            if r[0] == usernameEntry.get():
+            if len(r) > 0 and r[0] == usernameEntry.get():
                 messagebox.showerror('Error', "Account already exists")
                 return False
-        with open(e, newline="", mode='a') as csv_new:
-            s = [usernameEntry.get(), passwordEntry.get()]
-            csv_write = csv.writer(csv_new,delimiter = ",")
-            csv_write.writerow(s)
+    with open(e, newline="", mode='a') as csv_new:
+        s = [usernameEntry.get(), passwordEntry.get()]
+        csv_write = csv.writer(csv_new,delimiter = ",")
+        csv_write.writerow(s)
         return True
 
 

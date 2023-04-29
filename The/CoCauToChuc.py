@@ -1,12 +1,27 @@
-from tkinter import *
-# from GUI_Route import *
-#
-# class CoCau():
-#     def __init__(self):
-#         mainframe = MainFrame()
-
 import tkinter as tk
 from tkinter import ttk
+from GUI_Route import *
+
+class CoCau():
+    def __init__(self):
+        toolbar = tk.Frame()
+        main = tk.Frame()
+        toolbar.pack(side="top", fill="x", expand=False)
+        main.pack(side="bottom", fill="both", expand=True)
+
+        b1 = tk.Button(toolbar)
+        b2 = tk.Button(toolbar)
+        b1.pack(side="left")
+        b2.pack(side="left")
+
+        hsb = tk.Scrollbar(main, orient="horizontal")
+        vsb = tk.Scrollbar(main, orient="vertical")
+        text = tk.Text(main)
+        vsb.grid(row=0, column=1, sticky="ns")
+        hsb.grid(row=1, column=0, sticky="ew")
+        text.grid(row=0, column=0, sticky="nsew")
+        main.grid_rowconfigure(0, weight=1)
+        main.grid_columnconfigure(0, weight=1)
 
 
 class TreeGUI:
@@ -35,9 +50,6 @@ class TreeGUI:
         item = self.tree.focus()
         print(self.tree.item(item)["text"])
 
-
-tree_gui = TreeGUI()
-tree_gui.win.mainloop()
 
 
 
