@@ -46,7 +46,7 @@ def docFileCSV():
 
 
 
-img = Image.open(r"C:\Users\Admin\Downloads\login.png")
+img = Image.open(r"login.png")
 photo = ImageTk.PhotoImage(img)
 Label(root, image=photo, bg='white').place(x=50, y=50)
 frame = Frame(root, width=350, height=350, bg="white")
