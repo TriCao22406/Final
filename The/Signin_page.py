@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
-import thongtin_dangnhap as dt
+import csv
 
 root = Tk()
 root.title('Sign in')
@@ -9,10 +9,37 @@ root.geometry('925x500+300+100')
 root.resizable(False, False)
 root.configure(bg="#fff")
 
-def signup_page(self):
-    global root
+
+def signup_page():
     root.destroy()
-    import Signup_page
+    import signup
+
+
+
+def docFileCSV():
+    e = r"data.csv"
+    with open(e, newline="") as csv_file:
+        got_reader = csv.reader(csv_file, delimiter=",", quoting=csv.QUOTE_NONE)
+        i = 0
+        s = 0
+        list = []
+        for r in got_reader:
+            s += 1
+            list.append(r)
+
+        while i < s:
+            if str(list[i][0]) == user.get():
+                if str(list[i][1]) == password.get():
+                    messagebox.showinfo("Sign in", "Sucessfully")
+                    break
+                else:
+                    messagebox.showerror("Invalid", "invalid password")
+                    break
+            else:
+                i += 1
+        else:
+            messagebox.showerror('Invalid', "Invalid Username and password")
+
 
 
 
@@ -34,13 +61,13 @@ Frame(frame, width=280, height=1, bg='black').place(x=40, y=100)
 def on_enter1(e):
     a = user.get()
     if a == 'username':
-      user.delete(0, 'end')
+        user.delete(0, 'end')
 
 
 def on_leave1(e):
     a = user.get()
     if a == '':
-       user.insert(0, "username")
+        user.insert(0, "username")
 
 
 user.bind('<FocusIn>', on_enter1)
@@ -53,7 +80,7 @@ Frame(frame, width=280, height=1, bg='black').place(x=40, y=200)
 ######
 button_MODE = True
 def hide():
-    global button_MODE, password,hide_Button
+    global button_MODE
     if button_MODE:
         hide_Button.config(text='Show')
         password.config(show="*")
@@ -81,42 +108,10 @@ def on_leave2(e):
 
 password.bind('<FocusIn>', on_enter2)
 password.bind('<FocusOut>', on_leave2)
-# Quản lý thông tin đăng nhập
-class Dangnhap:
-
-    def __init__(self):
-        self.tendangnhap = user.get()
-        self.matkhau = password.get()
-        Dangnhap.kiemtrathongtindangnhap()
-
-    @classmethod
-    def tim_taikhoan(cls, user,password):
-        tendangnhap = user.get()
-        matkhau = password.get()
-        for i in range(len(dt.thongtindangnhap)):
-            if tendangnhap == dt.thongtindangnhap[i].tendangnhap and matkhau == dt.thongtindangnhap[i].matkhau:
-                return {"idx": i, 'inf': dt.thongtindangnhap[i]}
-            elif tendangnhap == dt.thongtindangnhap[i].tendangnhap and matkhau != dt.thongtindangnhap[i].matkhau:
-                return 0
-
-        return -1
-    @staticmethod
-    def kiemtrathongtindangnhap():
-        t= Dangnhap.tim_taikhoan(user, password)
-        if t == 0:
-            messagebox.showerror("Invalid", "invalid password")
-            flag= 0
-        elif t == -1:
-            messagebox.showerror('Invalid', "Invalid Username and password")
-        else:
-            messagebox.showinfo("Sign in","Sucessfully")
-
-
-
 # tao dong hoi "Do you have an account?" va sign in
 
 Button(frame, text="Sign in", border=0, width=30, pady=7, bg='#57a1f8', fg='white', justify=CENTER,
-       font=('Microsoft YaHei UI Light', 10),command=Dangnhap).place(x=60, y=250)
+       font=('Microsoft YaHei UI Light', 10),command=docFileCSV).place(x=60, y=250)
 
 ########
 label = Label(frame, text='Do you have an account ?', fg='black', font=('Microsoft YaHei UI Light', 10), bg='white',border=0)
@@ -125,4 +120,3 @@ button = Button(frame, text='Creat an account', border=0, fg='#57a1f8', bg='whit
 
 
 root.mainloop()
-

@@ -3,22 +3,15 @@ from PIL import ImageTk, Image
 from tkinter import messagebox
 import csv
 
-# Để tạm thời và chưa chỉnh thui nha mí bà
 def login_page():
     signup_windown.destroy()
-    import signin
+    import Signin_page
 
 
-def clear():
-    emailEntry.delete(0, END)
-    usernameEntry.delete(0, END)
-    passwordEntry.delete(0, END)
-    confirmEntry.delete(0, END)
-    check.set(0)
 
 
 def sucess(a, b):
-    e = r"C:\Users\Admin\PycharmProjects\pythonProject\data.csv"
+    e = r"data.csv"
     with open(e, newline="", mode='r') as csv_file:
         got_reader = csv.reader(csv_file, delimiter=",",quoting=csv.QUOTE_NONE)
         for r in got_reader:
