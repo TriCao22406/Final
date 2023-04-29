@@ -43,7 +43,7 @@ signup_windown.geometry('925x600+300+100')
 signup_windown.resizable(False, False)
 signup_windown.configure(bg="#fff")
 
-img = Image.open(r'C:\Users\Admin\Downloads\login.png')
+img = Image.open(r'login.png')
 photo = ImageTk.PhotoImage(img)
 Label(signup_windown, image=photo, bg='white').place(x=50, y=50)
 frame = Frame(signup_windown, width=350, height=350, bg="white")
