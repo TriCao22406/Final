@@ -52,8 +52,5 @@ class QuanlyNV():
 
 
 
-
-
-
 widget = Widget(root)
 root.mainloop()
