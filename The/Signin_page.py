@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
 import csv
+from Home_page import home
 
 root = Tk()
 root.title('Sign in')
@@ -31,8 +32,8 @@ def docFileCSV():
             if str(list[i][0]) == user.get():
                 if str(list[i][1]) == password.get():
                     messagebox.showinfo("Sign in", "Sucessfully")
-                    return 1
-                    break
+                    root.destroy()
+                    home()
                 else:
                     messagebox.showerror("Invalid", "invalid password")
                     break
@@ -121,3 +122,4 @@ button = Button(frame, text='Creat an account', border=0, fg='#57a1f8', bg='whit
 
 
 root.mainloop()
+
