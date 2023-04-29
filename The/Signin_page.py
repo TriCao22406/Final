@@ -12,7 +12,7 @@ root.configure(bg="#fff")
 
 def signup_page():
     root.destroy()
-    import signup
+    import Signup_page
 
 
 
@@ -31,6 +31,7 @@ def docFileCSV():
             if str(list[i][0]) == user.get():
                 if str(list[i][1]) == password.get():
                     messagebox.showinfo("Sign in", "Sucessfully")
+                    return 1
                     break
                 else:
                     messagebox.showerror("Invalid", "invalid password")
