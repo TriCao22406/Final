@@ -147,7 +147,7 @@ class Window(tk.Frame):
     #nhanvienmoi = thongtinluong(tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,BHYT,BHXH,Trocap,Luongthang13)
 
     # thêm nhân viên mới vào trong file csv
-    with open("employees.csv", "a", newline='') as csvfile:
+    with open("datatabase/employees.csv", "a", newline='') as csvfile:
         writer = csv.writer(csvfile)
         #writer.writerow([nhanvienmoi.manv,nhanvienmoi.tennv,nhanvienmoi.ngaysinh,nhanvienmoi.gt,nhanvienmoi.sdt,nhanvienmoi.email,nhanvienmoi.diachi,nhanvienmoi.hocvan,nhanvienmoi.chucvu])
 
