@@ -11,7 +11,7 @@ def login_page():
 
 
 def sucess(a, b):
-    e = r"D:\Final\Final\The\data.csv"
+    e = r"D:\Final\Final\The\datalogin.csv"
     with open(e, newline="", mode='r') as csv_file:
         got_reader = csv.reader(csv_file, delimiter=",",quoting=csv.QUOTE_NONE)
         for r in got_reader:
@@ -43,7 +43,7 @@ signup_windown.geometry('925x600+300+100')
 signup_windown.resizable(False, False)
 signup_windown.configure(bg="#fff")
 
-img = Image.open(r'login.png')
+img = Image.open(r'../images/login.png')
 photo = ImageTk.PhotoImage(img)
 Label(signup_windown, image=photo, bg='white').place(x=50, y=50)
 frame = Frame(signup_windown, width=350, height=350, bg="white")
