@@ -3,6 +3,8 @@ import tkinter as tk
 from tkinter import ttk
 
 root = tk.Tk()
+root.state("zoomed")
+
 view = ttk.Treeview()
 
 view["columns"] = ("First Name","Last Name","Email","Phone","Gender","Department","Job Title","Years Of Experience","Salary")
@@ -18,9 +20,9 @@ view.heading("Job Title", text="Job Title")
 view.heading("Years Of Experience", text="Years Of Experience")
 view.heading("Salary", text="Salary")
 
-a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
-with open(a, newline="", mode='r') as nv_csv:
+with open('../database/employees.csv', newline="", mode='r') as nv_csv:
     csv_reader = csv.reader(nv_csv)
+    view["height"] = 50
     for row in csv_reader:
         view.insert(parent='', index='end', values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8],))
 
