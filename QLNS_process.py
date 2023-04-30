@@ -89,28 +89,28 @@ class Window(tk.Frame):
         self.phucap.place(x=350,y=240)
 
         tk.Label(self, text="BHXH:", bg='#66CCFF', fg="black", width=12).grid(row=8, column=3, pady=5)
-        self.phucap = tk.Checkbutton(self)
-        self.phucap.place(x=500, y=240)
+        self.BHXH = tk.Checkbutton(self)
+        self.BHXH.place(x=500, y=240)
 
         tk.Label(self, text="Nơi làm việc:",bg='#66CCFF',fg="black",width =12).grid(row=9, column=0,pady=5)
         self.noilamviec_entry = tk.Entry(self)
         self.noilamviec_entry.grid(row=9, column=1)
 
         tk.Label(self, text="Trợ cấp:", bg='#66CCFF', fg="black", width=12).grid(row=9, column=2, pady=5)
-        self.phucap = tk.Checkbutton(self)
-        self.phucap.place(x=350, y=270)
+        self.trocap = tk.Checkbutton(self)
+        self.trocap.place(x=350, y=270)
 
         tk.Label(self, text="Lương tháng 13:", bg='#66CCFF', fg="black", width=12).grid(row=9, column=3, pady=5)
-        self.phucap = tk.Checkbutton(self)
-        self.phucap.place(x=500, y=270)
+        self.luong13= tk.Checkbutton(self)
+        self.luong13.place(x=500, y=270)
 
         tk.Label(self, text="Bậc lương:",bg='#66CCFF',fg="black",width =12).grid(row=10, column=0,pady=5)
         self.spinbox = tk.Spinbox(self,from_=0,to=12)
         self.spinbox.grid(row=10, column=1)
 
         tk.Label(self, text="BHYT:", bg='#66CCFF', fg="black", width=12).grid(row=10, column=2, pady=5)
-        self.phucap = tk.Checkbutton(self)
-        self.phucap.place(x=350, y=300)
+        self.BHYT = tk.Checkbutton(self)
+        self.BHYT.place(x=350, y=300)
 
         tk.Label(self, text="Lương cơ bản:",bg='#66CCFF',fg="black",width =12).grid(row=11, column=0, pady=5)
         self.luong_entry = tk.Entry(self)
@@ -130,11 +130,11 @@ class Window(tk.Frame):
         self.thoat_button = tk.Button(self, text="Thoát",bg="#EEDC82", command=self.destroy)
         self.thoat_button.grid(row=13,column=3,columnspan=2,pady=10,padx=10)
 
-
     def themnv(self):
         manv = self.manv_entry.get()
         tennv = self.tennv_entry.get()
         ngaysinh = self.ngaysinh_entry.get()
+        gt = self.gt_combobox
         sdt = self.sdt_entry.get()
         email = self.email_entry.get()
         diachi = self.diachi_entry.get()
@@ -143,14 +143,24 @@ class Window(tk.Frame):
         diachi = self.diachi_entry.get()
         bophan = self.bophan_entry.get()
         noilamviec = self.noilamviec_entry.get()
+        Bacluong = self.spinbox
         luongcoban = self.luong_entry.get()
+        Donvitiente = self.combobox
+        Phucap = self.phucap
+        Trocap = self.trocap
+        BHYT = self.BHYT
+        BHXH = self.BHXH
+        Luongthang13 = self.luong13
 
 
+#đoạn này đang làm lại,-----
 
+        nhanvienmoi = thongtinluong(tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,Trocap,BHYT,BHXH,Luongthang13)
 
-
-
-
+       # thêm nhân viên mới vào trong file csv
+        with open(r"C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\database\thongtinluong.csv", "a", newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow([nhanvienmoi.manv,nhanvienmoi.tennv,nhanvienmoi.ngaysinh,nhanvienmoi.gt,nhanvienmoi.sdt,nhanvienmoi.email,nhanvienmoi.diachi,nhanvienmoi.hocvan,nhanvienmoi.chucvu,nhanvienmoi.bophan,nhanvienmoi.noilamviec,nhanvienmoi.luongcoban,nhanvienmoi.phucap,nhanvienmoi.trocap,nhanvienmoi.BHYT,nhanvienmoi.BHXH,nhanvienmoi.BHYT])
 
 
 
