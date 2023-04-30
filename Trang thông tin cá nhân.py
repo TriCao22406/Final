@@ -206,10 +206,7 @@ class TrangThongTinCaNhan:
               scroll_x = ttk.Scrollbar(table_frame, orient=HORIZONTAL)
               scroll_y = ttk.Scrollbar(table_frame, orient=VERTICAL)
 
-              self.employees_table = ttk.Treeview(table_frame,
-                                                  column=('Name', 'ID', 'Dep', 'Email', 'D.O.B', 'Gender',
-                                                          'Salary', 'Phone', 'Address',),
-                                                  xscrollcommand=scroll_x.set, yscrollcommand=scroll_y.set)
+              self.employees_table = ttk.Treeview(table_frame,column=('Name', 'ID', 'Dep', 'Email', 'D.O.B', 'Gender','Salary', 'Phone', 'Address'), xscrollcommand=scroll_x.set, yscrollcommand=scroll_y.set)
 
               scroll_x.pack(side=BOTTOM, fill=X)
               scroll_y.pack(side=RIGHT, fill=Y)
