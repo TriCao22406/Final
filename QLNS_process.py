@@ -153,16 +153,14 @@ class Window(tk.Frame):
         Luongthang13 = self.luong13
 
 
+#đoạn này đang làm lại
 
-        nhanvienmoi = thongtinluong(tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,BHYT,BHXH,Trocap,Luongthang13)
+        nhanvienmoi = thongtinluong(tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,Trocap,BHYT,BHXH,Luongthang13)
 
        # thêm nhân viên mới vào trong file csv
-        with open("employees.csv", "a", newline='') as csvfile:
+        with open(r"C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\database\thongtinluong.csv", "a", newline='') as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow([nhanvienmoi.manv,nhanvienmoi.tennv,nhanvienmoi.ngaysinh,nhanvienmoi.gt,nhanvienmoi.sdt,nhanvienmoi.email,nhanvienmoi.diachi,nhanvienmoi.hocvan,nhanvienmoi.chucvu])
-
-    def sucess(self):
-        pass
+            writer.writerow([nhanvienmoi.manv,nhanvienmoi.tennv,nhanvienmoi.ngaysinh,nhanvienmoi.gt,nhanvienmoi.sdt,nhanvienmoi.email,nhanvienmoi.diachi,nhanvienmoi.hocvan,nhanvienmoi.chucvu,nhanvienmoi.bophan,nhanvienmoi.noilamviec,nhanvienmoi.luongcoban,nhanvienmoi.phucap,nhanvienmoi.trocap,nhanvienmoi.BHYT,nhanvienmoi.BHXH,nhanvienmoi.BHYT])
 
 
 
