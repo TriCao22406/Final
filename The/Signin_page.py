@@ -18,7 +18,7 @@ def signup_page():
 
 
 def docFileCSV():
-    e = r"data.csv"
+    e = r"datalogin.csv"
     with open(e, newline="") as csv_file:
         got_reader = csv.reader(csv_file, delimiter=",", quoting=csv.QUOTE_NONE)
         i = 0
@@ -46,7 +46,7 @@ def docFileCSV():
 
 
 
-img = Image.open(r"login.png")
+img = Image.open(r"../images/login.png")
 photo = ImageTk.PhotoImage(img)
 Label(root, image=photo, bg='white').place(x=50, y=50)
 frame = Frame(root, width=350, height=350, bg="white")
