@@ -3,32 +3,25 @@ from PIL import ImageTk, Image
 from tkinter import messagebox
 import csv
 
-# Để tạm thời và chưa chỉnh thui nha mí bà
 def login_page():
     signup_windown.destroy()
-    import signin
+    import Signin_page
 
 
-def clear():
-    emailEntry.delete(0, END)
-    usernameEntry.delete(0, END)
-    passwordEntry.delete(0, END)
-    confirmEntry.delete(0, END)
-    check.set(0)
 
 
 def sucess(a, b):
-    e = r"C:\Users\Admin\PycharmProjects\pythonProject\data.csv"
+    e = r"D:\Final\Final\The\data.csv"
     with open(e, newline="", mode='r') as csv_file:
         got_reader = csv.reader(csv_file, delimiter=",",quoting=csv.QUOTE_NONE)
         for r in got_reader:
-            if r[0] == usernameEntry.get():
+            if len(r) > 0 and r[0] == usernameEntry.get():
                 messagebox.showerror('Error', "Account already exists")
                 return False
-        with open(e, newline="", mode='a') as csv_new:
-            s = [usernameEntry.get(), passwordEntry.get()]
-            csv_write = csv.writer(csv_new,delimiter = ",")
-            csv_write.writerow(s)
+    with open(e, newline="", mode='a') as csv_new:
+        s = [usernameEntry.get(), passwordEntry.get()]
+        csv_write = csv.writer(csv_new,delimiter = ",")
+        csv_write.writerow(s)
         return True
 
 
@@ -50,7 +43,7 @@ signup_windown.geometry('925x600+300+100')
 signup_windown.resizable(False, False)
 signup_windown.configure(bg="#fff")
 
-img = Image.open(r'C:\Users\Admin\Downloads\login.png')
+img = Image.open(r'login.png')
 photo = ImageTk.PhotoImage(img)
 Label(signup_windown, image=photo, bg='white').place(x=50, y=50)
 frame = Frame(signup_windown, width=350, height=350, bg="white")
