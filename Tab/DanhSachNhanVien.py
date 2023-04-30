@@ -1,31 +1,27 @@
+import csv
 import tkinter as tk
 from tkinter import ttk
-import csv
 
-class DanhSachNhanVien:
-    def __init__(self, root):
-        self.root = root
-        self.root.geometry('1500x700')
-        self.root.title("Employee Management System")
+root = tk.Tk()
+view = ttk.Treeview()
+view["columns"] = ("First Name","Last Name","Email","Phone","Gender","Department","Job Title","Years Of Experience","Salary")
+view.column("#0", stretch= tk.NO, width=0)
+view.heading("#0", text="", anchor=tk.W)
+view.heading("First Name", text="First Name")
+view.heading("Last Name", text="Last Name")
+view.heading("Email", text="Email")
+view.heading("Phone", text="Phone")
+view.heading("Gender", text="Gender")
+view.heading("Department", text="Department")
+view.heading("Job Title", text="Job Title")
+view.heading("Years Of Experience", text="Years Of Experience")
+view.heading("Salary", text="Salary")
 
-        notebook = ttk.Notebook(root)
-        notebook.pack(fill='both', expand=True)
+a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+with open(a, newline="", mode='r') as nv_csv:
+    csv_reader = csv.reader(nv_csv)
+    for row in csv_reader:
+        view.insert(parent='', index='end', values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8],))
 
-        # Tạo thẻ trong widget Notebook
-        the = tk.Frame(notebook)
-
-        # Thêm thẻ vào widget Notebook
-        notebook.add(the, text="Danh sách nhân viên")
-
-        dsnv = tk.Listbox(root, height=100)
-        dsnv.pack(padx=100, pady=100)
-
-        with open("../database/ThongTinNhanVien.csv", "w", newline="") as nv_csv:
-            write_csv = csv.writer(nv_csv)
-            write_csv.writerow(["Mã NV", "Tên NV", "Đơn vị", "Phòng ban", "Chức danh", "Chức vụ", "Giới tính", "Ngày sinh", "Email", "SĐT"])
-
-
-if __name__=="__main__":
-       root = tk.Tk()
-       obj= DanhSachNhanVien(root)
-       root.mainloop()
+view.pack()
+root.mainloop()
