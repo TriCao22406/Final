@@ -153,7 +153,7 @@ class Window(tk.Frame):
         Luongthang13 = self.luong13
 
 
-#đoạn này đang làm lại
+#đoạn này đang làm lại,--
 
         nhanvienmoi = thongtinluong(tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,Trocap,BHYT,BHXH,Luongthang13)
 
