@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44ca01bb-f3d1-4067-a6d7-8923157a55c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/database/employees.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/ThongTinNhanVien.csv" beforeDir="false" afterPath="$PROJECT_DIR$/database/ThongTinNhanVien.csv" afterDir="false" />
+    <list default="true" id="44ca01bb-f3d1-4067-a6d7-8923157a55c9" name="Changes" comment="commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tab/ChamCong.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tab/CoCauToChuc.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tab/CoCauToChuc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tab/Signup_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tab/Signup_page.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +49,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\Documents\GitHub\Final\database" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +64,7 @@
       <updated>1682808797343</updated>
       <workItem from="1682808804626" duration="2226000" />
       <workItem from="1682811164357" duration="7758000" />
-      <workItem from="1682860044412" duration="1752000" />
+      <workItem from="1682860044412" duration="2860000" />
     </task>
     <servers />
   </component>
@@ -74,6 +81,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Final$Signin_page.coverage" NAME="Signin_page Coverage Results" MODIFIED="1682810639006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/The" />
