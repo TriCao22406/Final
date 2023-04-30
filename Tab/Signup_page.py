@@ -14,6 +14,7 @@ def sucess(a, b):
     e = r"D:\Final\Final\The\datalogin.csv"
     with open(e, newline="", mode='r') as csv_file:
         got_reader = csv.reader(csv_file, delimiter=",",quoting=csv.QUOTE_NONE)
+        print(got_reader)
         for r in got_reader:
             if len(r) > 0 and r[0] == usernameEntry.get():
                 messagebox.showerror('Error', "Account already exists")
