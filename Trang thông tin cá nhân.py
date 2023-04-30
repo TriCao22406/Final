@@ -1,7 +1,7 @@
 
 
 
-
+       from QLNS_process import *
        from tkinter import *
        from tkinter import ttk, messagebox
        from PIL import Image, ImageTk
