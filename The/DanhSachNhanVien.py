@@ -1,22 +1,27 @@
 import tkinter as tk
 from tkinter import ttk
 
-root = tk.Tk()
-root.title("Quản lý nhân sự")
+class DanhSachNhanVien:
+    def __init__(self, root):
+        self.root = root
+        self.root.geometry('1500x700')
+        self.root.title("Employee Management System")
 
-notebook = ttk.Notebook(root)
-notebook.pack(fill='both', expand=True)
+        notebook = ttk.Notebook(root)
+        notebook.pack(fill='both', expand=True)
 
-# Tạo thẻ trong widget Notebook
-the = tk.Frame(notebook)
+        # Tạo thẻ trong widget Notebook
+        the = tk.Frame(notebook)
 
-# Thêm thẻ vào widget Notebook
-notebook.add(the, text="Danh sách nhân viên")
+        # Thêm thẻ vào widget Notebook
+        notebook.add(the, text="Danh sách nhân viên")
 
-dsnv = tk.Listbox(root, height=10)
-dsnv.pack(padx=10, pady=10)
+        dsnv = tk.Listbox(root, height=100)
+        dsnv.pack(padx=100, pady=100)
 
 
-tk.Label(the, text="Nội dung của thẻ").pack(pady=10)
 
-root.mainloop()
+if __name__=="__main__":
+       root = tk.Tk()
+       obj= DanhSachNhanVien(root)
+       root.mainloop()
