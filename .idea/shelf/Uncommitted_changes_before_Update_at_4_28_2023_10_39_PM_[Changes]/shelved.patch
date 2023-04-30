@@ -1,0 +1,100 @@
+Index: GUI_Route.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\r\nmodule chính, có tác dụng điều hướng tới các cửa sổ khác nhau\r\n\"\"\"\r\nimport tkinter as tk\r\n\r\nclass App(tk.Tk):\r\n    def __init__(self):\r\n        super().__init__()\r\n\r\n        self.title(\"Maxwell Co. Ltd\")\r\n        self.state(\"zoomed\")\r\n        self.resizable(False,False)\r\n\r\n#Frame chính chứa tất cả widget của thẻ (để xóa một lần cho dễ)\r\nclass MainFrame(tk.Frame):\r\n    def __init__(self, master=None, cnf={}, **kw):\r\n        super().__init__()\r\n        self.pack(fill=\"both\", expand=1)\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/GUI_Route.py b/GUI_Route.py
+--- a/GUI_Route.py	(revision 17a92bfd76c1d60a71a8a8955b4e72566040b23d)
++++ b/GUI_Route.py	(date 1682691442497)
+@@ -15,5 +15,5 @@
+ class MainFrame(tk.Frame):
+     def __init__(self, master=None, cnf={}, **kw):
+         super().__init__()
+-        self.pack(fill="both", expand=1)
+-
++        self.Button("Trang thông tin cá nhân.py")
++        self.pack(fill="both", expand=1)
+\ No newline at end of file
+Index: Trang thông tin cá nhân.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Trang thông tin cá nhân.py b/Trang thông tin cá nhân.py
+new file mode 100644
+--- /dev/null	(date 1682695954300)
++++ b/Trang thông tin cá nhân.py	(date 1682695954300)
+@@ -0,0 +1,44 @@
++
++from QLNS_process import *
++from tkinter import *
++from tkinter import ttk
++from PIL import Image, ImageTk
++
++
++
++
++
++class TrangThongTinCaNhan:
++
++        def __init__(self, root):
++               self.root = root
++               self.root.geometry('1530x790+0+0')
++               self.root.title("Employee Management System")
++
++               lbl_title=Label(self.root,text='Employ Management System', font=('times new roman', 37, 'bold'),fg="white",
++                                bg='#f6a88c')
++               lbl_title.place(x=0, y=0, width=1530, height=50)
++
++               #logo
++               img_logo= Image.open('nguyen-tac-tuyen-dung-nhan-su-4.jpg')
++               img_logo= img_logo.resize((50,50), Image.ANTIALIAS)
++               self.photo_logo=ImageTk.PhotoImage(img_logo)
++
++               self.logo=Label(self.root,image=self.photo_logo)
++               self.logo.place(x=270, y=0, width=50, height=50)
++                # image frame
++               img_frame=Frame(self.root,bd=2, relief=RIDGE,bg='white')
++               img_frame.place(x=0,y=50,width=1530,height=160)
++
++               #1st
++               img1= Image.open('2.jpg')
++               img1= img1.resize((540,160), Image.ANTIALIAS)
++               self.photo1=ImageTk.PhotoImage(img1)
++
++               self.imag_1=Label(self.root,image=self.photo1)
++               self.imqg_1.place(x=0, y=0, width=540, height=160)
++
++if __name__=="__main__":
++       root=Tk()
++       obj= TrangThongTinCaNhan(root)
++       root.mainloop()
+\ No newline at end of file
+Index: QLNS_process.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Nhanvien_TTca_nhan():\r\n   def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,):\r\n      self.manv = manv\r\n      self.tennv = tennv\r\n      self.ngaysinh = ngaysinh\r\n      self.gt = gt\r\n      self.sdt = sdt\r\n      self.email = email\r\n      self.diachi = diachi\r\n      self.hocvan = hocvan\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/QLNS_process.py b/QLNS_process.py
+--- a/QLNS_process.py	(revision 17a92bfd76c1d60a71a8a8955b4e72566040b23d)
++++ b/QLNS_process.py	(date 1682691442516)
+@@ -1,4 +1,4 @@
+-class Nhanvien_TTca_nhan():
++class Nhanvien_TTca_nhan():  # class này cần def them hàm get image của nhân sự để hiển thị lên trang cá nhân nhâ
+    def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,):
+       self.manv = manv
+       self.tennv = tennv
+@@ -8,7 +8,4 @@
+       self.email = email
+       self.diachi = diachi
+       self.hocvan = hocvan
+-
+-
+-
+-
++      # class này có cần def getimage vào đề show infor tren trang cá nhân không nhỉ
+\ No newline at end of file

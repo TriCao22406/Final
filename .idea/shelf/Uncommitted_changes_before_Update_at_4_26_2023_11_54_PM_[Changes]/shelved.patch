@@ -1,0 +1,61 @@
+Index: QLNS_process.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Nhanvien_TTca_nhan():\r\n   def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,):\r\n      self.manv = manv\r\n      self.tennv = tennv\r\n      self.ngaysinh = ngaysinh\r\n      self.gt = gt\r\n      self.sdt = sdt\r\n      self.email = email\r\n      self.diachi = diachi\r\n      self.hocvan = hocvan\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/QLNS_process.py b/QLNS_process.py
+--- a/QLNS_process.py	(revision 6f2bd461b2099ca94b20ce45a1b19f55f79fffef)
++++ b/QLNS_process.py	(date 1682525771425)
+@@ -1,4 +1,4 @@
+-class Nhanvien_TTca_nhan():
++class Nhanvien_TTca_nhan():  # class này cần def them hàm get image của nhân sự để hiển thị lên trang cá nhân nhâ
+    def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,):
+       self.manv = manv
+       self.tennv = tennv
+@@ -7,8 +7,4 @@
+       self.sdt = sdt
+       self.email = email
+       self.diachi = diachi
+-      self.hocvan = hocvan
+-
+-
+-
+-
++      self.hocvan = hocvan
+\ No newline at end of file
+Index: Trang thông tin cá nhân nhân sự.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Trang thông tin cá nhân nhân sự.py b/Trang thông tin cá nhân nhân sự.py
+new file mode 100644
+--- /dev/null	(date 1682526204264)
++++ b/Trang thông tin cá nhân nhân sự.py	(date 1682526204264)
+@@ -0,0 +1,4 @@
++from QLNS_process import *
++from tkinter import *
++class TrangThongTinCaNhan(Nhanvien_TTca_nhan):
++    def __hienthithongtin__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan):
+\ No newline at end of file
+Index: GUI_Route.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\"\"\"\r\nmodule chính, có tác dụng điều hướng tới các cửa sổ khác nhau\r\n\"\"\"\r\nimport tkinter as tk\r\n\r\nclass App(tk.Tk):\r\n    def __init__(self):\r\n        super().__init__()\r\n\r\n        self.title(\"Maxwell Co. Ltd\")\r\n        self.state(\"zoomed\")\r\n        self.resizable(False,False)\r\n\r\n#Frame chính chứa tất cả widget của thẻ (để xóa một lần cho dễ)\r\nclass MainFrame(tk.Frame):\r\n    def __init__(self, master=None, cnf={}, **kw):\r\n        super().__init__()\r\n        self.pack(fill=\"both\", expand=1)\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/GUI_Route.py b/GUI_Route.py
+--- a/GUI_Route.py	(revision 6f2bd461b2099ca94b20ce45a1b19f55f79fffef)
++++ b/GUI_Route.py	(date 1682526204279)
+@@ -15,5 +15,5 @@
+ class MainFrame(tk.Frame):
+     def __init__(self, master=None, cnf={}, **kw):
+         super().__init__()
+-        self.pack(fill="both", expand=1)
+-
++        self.Button("Trang thông tin cá nhân")
++        self.pack(fill="both", expand=1)
+\ No newline at end of file

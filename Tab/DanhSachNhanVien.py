@@ -20,7 +20,7 @@ class DanhSachNhanVien:
         dsnv = tk.Listbox(root, height=100)
         dsnv.pack(padx=100, pady=100)
 
-        with open("ThongTinNhanVien.csv", "w", newline="") as nv_csv:
+        with open("../database/ThongTinNhanVien.csv", "w", newline="") as nv_csv:
             write_csv = csv.writer(nv_csv)
             write_csv.writerow(["Mã NV", "Tên NV", "Đơn vị", "Phòng ban", "Chức danh", "Chức vụ", "Giới tính", "Ngày sinh", "Email", "SĐT"])
 
