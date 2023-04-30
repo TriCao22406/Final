@@ -79,11 +79,60 @@ class TrangThongTinCaNhan:
                txt_name=ttk.Entry(upper_frame,width=22,font=('arial', 12, 'bold'))
                txt_name.grid(row=0,column=3,padx=2,pady=7,sticky=W )
 
+               #Designation
+               lbl_ID = Label(upper_frame, text='ID', font=('arial', 11, 'bold'),bg='white')
+               lbl_ID.grid(row=1, column=0,  sticky=W,padx=2,pady=7)
+               txt_ID=ttk.Entry(upper_frame,width=22,font=('arial', 12, 'bold'))
+               txt_ID.grid(row=1,column=1,padx=2,pady=7,sticky=W )
+
                #Email
                lbl_email = Label(upper_frame, text='Email', font=('arial', 11, 'bold'),bg='white')
-               lbl_email.grid(row=0, column=2,  sticky=W,padx=2,pady=7)
+               lbl_email.grid(row=1, column=2,  sticky=W,padx=2,pady=7)
                txt_email=ttk.Entry(upper_frame,width=22,font=('arial', 12, 'bold'))
-               txt_email.grid(row=0,column=3,padx=2,pady=7,sticky=W )
+               txt_email.grid(row=1,column=3,padx=2,pady=7 )
+
+               #Address
+               lbl_addr= Label(upper_frame, text='Address', font=('arial', 11, 'bold'),bg='white')
+               lbl_addr.grid(row=0, column=2,  sticky=W,padx=2,pady=7)
+               txt_addr=ttk.Entry(upper_frame,width=22,font=('arial', 12, 'bold'))
+               txt_addr.grid(row=0,column=3,padx=2,pady=7 )
+
+               # gender
+               lbl_gen = Label(upper_frame, text='Gender', font=('arial', 11, 'bold'), fg="black", bg='white')
+               lbl_gen.grid(row=2, column=2, padx=2, sticky=W)
+               combo_gen = ttk.Combobox(upper_frame, font=('arial', 12, 'bold'), width=17, state='readonly')
+               combo_gen['value'] = ('Male', 'Female', 'Other')
+               combo_gen.current(0)
+               combo_gen.grid(row=2, column=3, padx=2, pady=10, sticky=W)
+
+               # D.O.B
+               lbl_born = Label(upper_frame, text='D.O.B', font=('arial', 11, 'bold'), bg='white')
+               lbl_born.grid(row=3, column=0, sticky=W, padx=2, pady=7)
+               txt_born= ttk.Entry(upper_frame, width=22, font=('arial', 12, 'bold'))
+               txt_born.grid(row=3, column=1, padx=2, pady=7, sticky=W)
+
+               # salary
+               lbl_sal= Label(upper_frame, text='Salary', font=('arial', 11, 'bold'), bg='white')
+               lbl_sal.grid(row=4, column=0, sticky=W, padx=2, pady=7)
+               txt_sal = ttk.Entry(upper_frame, width=22, font=('arial', 12, 'bold'))
+               txt_sal.grid(row=4, column=1, padx=2, pady=7, sticky=W)
+
+               # Phone
+               lbl_phone= Label(upper_frame, text='Phone Number', font=('arial', 11, 'bold'), bg='white')
+               lbl_phone.grid(row=4, column=2, sticky=W, padx=2, pady=7)
+               txt_phone = ttk.Entry(upper_frame, width=22, font=('arial', 12, 'bold'))
+               txt_phone.grid(row=4, column=3, padx=2, pady=7, sticky=W)
+
+               # face ID
+               img = Image.open('nguyen-tac-tuyen-dung-nhan-su-4.jpg')
+               img = img.resize((220,220), Image.ANTIALIAS)
+               self.photo = ImageTk.PhotoImage(img)
+
+               self.imag = Label(upper_frame, image=self.photo)
+               self.imag.place(x=100, y=0, width=220, height=220)
+
+
+
 
 
 
