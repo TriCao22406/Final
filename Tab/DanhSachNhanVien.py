@@ -25,6 +25,14 @@ with open('../database/employees.csv', newline="", mode='r') as nv_csv:
     view["height"] = 50
     for row in csv_reader:
         view.insert(parent='', index='end', values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8],))
+scrollbar_doc = ttk.Scrollbar(root, orient="vertical", command=view.yview)
+scrollbar_ngang = ttk.Scrollbar(root, orient="horizontal", command=view.xview)
+view.configure(yscrollcommand=scrollbar_doc.set, xscrollcommand=scrollbar_ngang.set)
+scrollbar_doc.pack(fill="y", side="right")
+view.configure()
+scrollbar_ngang.pack(fill="x", side="bottom")
+view.pack(fill="both", expand=True)
+
 
 view.pack()
 root.mainloop()
