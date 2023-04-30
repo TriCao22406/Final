@@ -130,7 +130,6 @@ class Window(tk.Frame):
         self.thoat_button = tk.Button(self, text="Thoát",bg="#EEDC82", command=self.destroy)
         self.thoat_button.grid(row=13,column=3,columnspan=2,pady=10,padx=10)
 
-
     def themnv(self):
         manv = self.manv_entry.get()
         tennv = self.tennv_entry.get()
@@ -145,12 +144,12 @@ class Window(tk.Frame):
         noilamviec = self.noilamviec_entry.get()
         luongcoban = self.luong_entry.get()
 
+    #nhanvienmoi = thongtinluong(tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,BHYT,BHXH,Trocap,Luongthang13)
 
-
-
-
-
-
+    # thêm nhân viên mới vào trong file csv
+    with open("employees.csv", "a", newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        #writer.writerow([nhanvienmoi.manv,nhanvienmoi.tennv,nhanvienmoi.ngaysinh,nhanvienmoi.gt,nhanvienmoi.sdt,nhanvienmoi.email,nhanvienmoi.diachi,nhanvienmoi.hocvan,nhanvienmoi.chucvu])
 
 
 
