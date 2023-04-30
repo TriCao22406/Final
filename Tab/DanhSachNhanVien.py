@@ -4,6 +4,7 @@ from tkinter import ttk
 
 root = tk.Tk()
 view = ttk.Treeview()
+
 view["columns"] = ("First Name","Last Name","Email","Phone","Gender","Department","Job Title","Years Of Experience","Salary")
 view.column("#0", stretch= tk.NO, width=0)
 view.heading("#0", text="", anchor=tk.W)
