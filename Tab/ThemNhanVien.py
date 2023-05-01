@@ -18,6 +18,7 @@ class nhanvien:
         self.tennv = tennv_entry.get()
         self.gioitinh = gt_combobox.get()
         self.hocvan = hocvan_entry.get()
+        self.chucvu=chucvu_entry.get()
         self.ngaysinh = ngaysinh_entry.get()
         self.dienthoai = sdt_entry.get()
         self.email = email_entry.get()
@@ -49,13 +50,14 @@ class nhanvien:
         root2.state("zoomed")
 
         def create_tree_widget():
-            columns = ('Mã nhân viên','Tên nhân viên','Giới tính ', 'Học vấn' , 'Ngày sinh:' , 'Điện thoại:', 'email:', 'địa chỉ:' ,'bộ phận: ','phụ cấp: ','BHXH:','Nơi làm việc ','Trợ cấp: ','Lương tháng 13: ','Bậc lương: ','BHYT', "Lương cơ bản",'loại tiền tệ')
+            columns = ('Mã nhân viên','Tên nhân viên','Giới tính ', 'Học vấn' ,'Chức vụ', 'Ngày sinh:' , 'Điện thoại:', 'email:', 'địa chỉ:' ,'bộ phận: ','phụ cấp: ','BHXH:','Nơi làm việc ','Trợ cấp: ','Lương tháng 13: ','Bậc lương: ','BHYT', "Lương cơ bản",'loại tiền tệ')
             tree = ttk.Treeview(root2, columns=columns, show='headings')
 
             tree.heading('Mã nhân viên', text='Mã nhân viên')
             tree.heading('Tên nhân viên', text='Tên nhân viên')
             tree.heading('Giới tính ', text='Giới tính ')
             tree.heading('Học vấn', text='Học vấn')
+            tree.heading('Chức vụ', text='Chức vụ')
             tree.heading('Ngày sinh:', text='Ngày sinh:')
             tree.heading('Điện thoại:', text='Điện thoại:')
             tree.heading('email:', text='email:')
@@ -72,10 +74,10 @@ class nhanvien:
             contact = []
             for nv in cls.dsnv:
                 contact.append(
-                    [nv.manv, nv.tennv, nv.gioitinh, nv.hocvan, nv.ngaysinh, nv.dienthoai, nv.email])
+                    [nv.manv, nv.tennv, nv.gioitinh, nv.hocvan,nv.chucvu, nv.ngaysinh, nv.dienthoai, nv.email])
 
             for nv1 in contact:
-                tree.insert('', tk.END, values=(nv1[0],nv1[1],nv1[2],nv1[3],nv1[4],nv1[5],nv1[6]))
+                tree.insert('', tk.END, values=(nv1[0],nv1[1],nv1[2],nv1[3],nv1[4],nv1[5],nv1[6],nv1[7]))
             tree.pack(side=LEFT, fill=BOTH)
             scrollbar_doc.config(command=tree.yview)
             scrollbar_ngang.config(command=tree.xview)
@@ -120,7 +122,6 @@ ngaysinh_entry.grid(row=3, column=1)
 tk.Label(root, text="Số điện thoại:", bg="#66CCFF", fg="black", width=12).grid(row=3, column=2, pady=5, padx=5)
 sdt_entry = tk.Entry(root)
 sdt_entry.grid(row=3, column=3)
-
 tk.Label(root, text="Chức vụ:", bg="#66CCFF", fg="black", width=12).grid(row=4, column=0, pady=5, padx=5)
 chucvu_entry = tk.Entry(root)
 chucvu_entry.grid(row=4, column=1)
