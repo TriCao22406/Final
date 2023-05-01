@@ -16,7 +16,7 @@ class Nhanvien():
       self.chucvu = chucvu
 
 class  thongtinluong(Nhanvien):
-   def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,BHYT,BHXH,Trocap,Luongthang13):
+   def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,BHYT,BHXH,Trocap,luongthang13):
       super().__init__(manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu)
       self.bophan= bophan
       self.noilamviec= noilamviec
@@ -27,13 +27,14 @@ class  thongtinluong(Nhanvien):
       self.BHXH = BHXH
       self.trocap= Trocap
       self.tiente= Donvitiente
-      self.luongthang13 = Luongthang13
+      self.luongthang13 = luongthang13
 
 class Window(tk.Frame):
     def __init__(self, master=None, **kwargs):
         super().__init__(master,**kwargs)
         self.master = master
         self.pack()
+        self.nhanvien = []
 
         self.label1 = tk.Label(self, text="THÔNG TIN NHÂN VIÊN", font=("Times", 20,"bold",),justify=CENTER,fg="#DD0000")
         self.label1.grid(row=0, column=0, columnspan=4)
@@ -130,6 +131,7 @@ class Window(tk.Frame):
         self.thoat_button = tk.Button(self, text="Thoát",bg="#EEDC82", command=self.destroy)
         self.thoat_button.grid(row=13,column=3,columnspan=2,pady=10,padx=10)
 
+
     def themnv(self):
         manv = self.manv_entry.get()
         tennv = self.tennv_entry.get()
@@ -150,27 +152,54 @@ class Window(tk.Frame):
         Trocap = self.trocap
         BHYT = self.BHYT
         BHXH = self.BHXH
-        Luongthang13 = self.luong13
+        luongthang13 = self.luong13
 
 
-#đoạn này đang làm lại,-----
+        #tạo nhân viên mới
+        nvm = thongtinluong(manv, tennv, ngaysinh, gt, sdt, email, diachi, hocvan, chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,Trocap,BHYT,BHXH,luongthang13)
 
-        nhanvienmoi = thongtinluong(tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,Trocap,BHYT,BHXH,Luongthang13)
+        # kiểm tra sự trùng lặp
+        for e in self.nhanvien:
+            if e.manv == nvm.manv:
+                print("Nhân viên với mã {} đã tồn tại!".format(manv))
+                return
 
-       # thêm nhân viên mới vào trong file csv
-        with open(r"C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\database\thongtinluong.csv", "a", newline='') as csvfile:
+        # thêm nhân viên mới vào trong danh sách và trong file csv
+        self.nhanvien.append(nvm)
+        with open("employees.csv", "a", newline='',encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
-            writer.writerow([nhanvienmoi.manv,nhanvienmoi.tennv,nhanvienmoi.ngaysinh,nhanvienmoi.gt,nhanvienmoi.sdt,nhanvienmoi.email,nhanvienmoi.diachi,nhanvienmoi.hocvan,nhanvienmoi.chucvu,nhanvienmoi.bophan,nhanvienmoi.noilamviec,nhanvienmoi.luongcoban,nhanvienmoi.phucap,nhanvienmoi.trocap,nhanvienmoi.BHYT,nhanvienmoi.BHXH,nhanvienmoi.BHYT])
+            writer.writerow([
+                nvm.manv,
+                nvm.tennv,
+                nvm.ngaysinh,
+                nvm.gt,
+                nvm.sdt,
+                nvm.email,
+                nvm.diachi,
+                nvm.hocvan,
+                nvm.chucvu,
+                nvm.bophan,
+                nvm.noilamviec,
+                nvm.bacluong,
+                nvm.luongcoban,
+                nvm.tiente,
+                nvm.phucap,
+                nvm.trocap,
+                nvm.BHYT,
+                nvm.BHXH,
+                nvm.luongthang13,
+
+            ])
+        print("Lưu thông tin thành công!")
 
 
-
-#cửa sổ
 root = tk.Tk()
 root.title("THÊM NHÂN VIÊN")
 root.geometry('900x500+200+100')
 root.resizable(False, False)
 
-app = Window(master=root)
+
+app = Window(master=root,)
 
 app.mainloop()
 
