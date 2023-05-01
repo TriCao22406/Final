@@ -10,9 +10,9 @@ class App(tk.Tk):
         super().__init__()
 
         self.title("Maxwell Co. Ltd")
-        #self.geometry("500x300")
+        # self.geometry("500x300")
         self.state("zoomed")
-        self.resizable(False, False)
+        self.resizable(True, True)
 
 
     def get_width(self):
