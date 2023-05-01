@@ -22,16 +22,6 @@ class nhanvien:
         self.dienthoai = sdt_entry.get()
         self.email = email_entry.get()
         self.diachi = diachi_entry.get()
-        self.bophan = bophan_entry.get()
-        self.phucap = phu_cap.get()
-        self.BHXH = bhxh.get()
-        self.noilamviec = noilamviec_entry.get()
-        self.trocap = tro_cap.get()
-        self.luongthang13 = luong_thang13.get()
-        self.bacluong = spinbox.get()
-        self.BHYT = bhyt.get()
-        self.luongcoban = luong_entry.get()
-        self.loaitiente = combobox.get()
         nhanvien.themnv(self)
 
     @classmethod
@@ -69,16 +59,6 @@ class nhanvien:
             tree.heading('Ngày sinh:', text='Ngày sinh:')
             tree.heading('Điện thoại:', text='Điện thoại:')
             tree.heading('email:', text='email:')
-            tree.heading('bộ phận: ', text='bộ phận: ')
-            tree.heading('phụ cấp: ', text='phụ cấp: ')
-            tree.heading('BHXH:', text='BHXH:')
-            tree.heading('Nơi làm việc ', text='Nơi làm việc ')
-            tree.heading('Trợ cấp: ', text='Trợ cấp: ')
-            tree.heading('Lương tháng 13: ', text='Lương tháng 13: ')
-            tree.heading('Bậc lương: ', text='Bậc lương: ')
-            tree.heading('BHYT', text='BHYT')
-            tree.heading("Lương cơ bản", text="Lương cơ bản")
-            tree.heading('loại tiền tệ', text='loại tiền tệ')
 
 
             scrollbar_doc = Scrollbar(root2)
@@ -92,11 +72,10 @@ class nhanvien:
             contact = []
             for nv in cls.dsnv:
                 contact.append(
-                    [nv.manv, nv.tennv, nv.gioitinh, nv.hocvan, nv.ngaysinh, nv.dienthoai, nv.email, nv.bophan,
-                     nv.phucap, nv.BHXH, nv.noilamviec, nv.trocap, nv.luongthang13, nv.bacluong, nv.BHYT, nv.luongcoban,
-                     nv.loaitiente])
+                    [nv.manv, nv.tennv, nv.gioitinh, nv.hocvan, nv.ngaysinh, nv.dienthoai, nv.email])
+
             for nv1 in contact:
-                tree.insert('', tk.END, values=nv1)
+                tree.insert('', tk.END, values=(nv1[0],nv1[1],nv1[2],nv1[3],nv1[4],nv1[5],nv1[6]))
             tree.pack(side=LEFT, fill=BOTH)
             scrollbar_doc.config(command=tree.yview)
             scrollbar_ngang.config(command=tree.xview)
@@ -104,6 +83,17 @@ class nhanvien:
         create_tree_widget()
 
         root2.mainloop()
+    @staticmethod
+    def xoanv():
+        manv= manv_entry.get()
+        t = nhanvien.timnv(manv)
+        if t == -1:
+            messagebox.showerror("Lỗi", 'Không tìm thấy nhân viên để xóa')
+            return False
+        else:
+            nhanvien.dsnv.pop(t["idx"])
+            messagebox.showinfo("tk",'xóa thành công')
+            return True
 
 
 tk.Label(root, text="MSNV:", bg="#66CCFF", fg="black", width=12).grid(row=1, column=0, pady=5, padx=5)
@@ -143,47 +133,8 @@ tk.Label(root, text="Địa chỉ:", bg="#66CCFF", fg="black", width=12).grid(ro
 diachi_entry = tk.Entry()
 diachi_entry.grid(row=5, column=1)
 
-separator = ttk.Separator(root, orient="horizontal")
-separator.grid(row=6, column=0, padx=15, pady=10)
 
-tk.Label(root, text="Mức lương", font=("Times", 13, "bold"), fg="#DD0000").grid(row=7, column=0)
-tk.Label(root, text="Bộ phận:", bg='#66CCFF', fg="black", width=12).grid(row=8, column=0, pady=5)
-bophan_entry = tk.Entry(root)
-bophan_entry.grid(row=8, column=1, pady=5)
-phu_cap = StringVar()
-tk.Label(root, text="Phụ cấp:", bg='#66CCFF', fg="black", width=12).grid(row=8, column=2, pady=5)
-phucap = tk.Checkbutton(root, variable=phu_cap, onvalue='có', offvalue='không')
-phucap.place(x=350, y=240)
-bhxh = StringVar()
-tk.Label(root, text="BHXH:", bg='#66CCFF', fg="black", width=12).grid(row=8, column=3, pady=5)
-BHXH = tk.Checkbutton(root, variable=bhxh, onvalue='có', offvalue='không')
-BHXH.place(x=500, y=240)
-tk.Label(root, text="Nơi làm việc:", bg='#66CCFF', fg="black", width=12).grid(row=9, column=0, pady=5)
-noilamviec_entry = tk.Entry(root)
-noilamviec_entry.grid(row=9, column=1)
-tro_cap = StringVar()
-tk.Label(root, text="Trợ cấp:", bg='#66CCFF', fg="black", width=12).grid(row=9, column=2, pady=5)
-trocap = tk.Checkbutton(root, variable=tro_cap, onvalue='có', offvalue='không')
-trocap.place(x=350, y=270)
-luong_thang13 = StringVar()
-tk.Label(root, text="Lương tháng 13:", bg='#66CCFF', fg="black", width=12).grid(row=9, column=3, pady=5)
-luong13 = tk.Checkbutton(root, variable=luong_thang13, onvalue='có', offvalue='không')
-luong13.place(x=500, y=270)
 
-tk.Label(root, text="Bậc lương:", bg='#66CCFF', fg="black", width=12).grid(row=10, column=0, pady=5)
-spinbox = tk.Spinbox(root, from_=0, to=12)
-spinbox.grid(row=10, column=1)
-bhyt = StringVar()
-tk.Label(root, text="BHYT:", bg='#66CCFF', fg="black", width=12).grid(row=10, column=2, pady=5)
-BHYT = tk.Checkbutton(root, variable=bhyt, onvalue='có', offvalue='không')
-BHYT.place(x=350, y=300)
-
-tk.Label(root, text="Lương cơ bản:", bg='#66CCFF', fg="black", width=12).grid(row=11, column=0, pady=5)
-luong_entry = tk.Entry(root)
-luong_entry.grid(row=11, column=1)
-combobox = ttk.Combobox(root, values=["VNĐ", "USD"])
-combobox.set("VNĐ")
-combobox.grid(row=11, column=2)
 
 # tạo 2 button lưu thông tin và thoát
 
@@ -194,6 +145,8 @@ luu_button = tk.Button(root, text="Lưu thông tin", bg="#FF6A6A", command=nhanv
 luu_button.place(x=20, y=390)
 hienthi_button = tk.Button(root, text='Hiển thị thông tin', bg='#FF6A6A', command=nhanvien.hienthinv)
 hienthi_button.place(x=100, y=390)
+xoa_button = tk.Button(root, text='xóa nhân viên', bg='#FF6A6A', command=nhanvien.xoanv)
+xoa_button.place(x=170, y=390)
 
 thoat_button = tk.Button(root, text="Thoát", bg="#EEDC82", command=root.destroy)
 thoat_button.grid(row=13, column=3, columnspan=2, pady=10, padx=10)
