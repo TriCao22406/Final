@@ -1,6 +1,6 @@
 import csv
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, simpledialog, messagebox
 
 def xoanv():
     nv_xoa = view.selection()
@@ -21,11 +21,61 @@ def xoanv():
             csv_writer.writerows(rows)
         file_csv.close()
 
+def capnhatnv():
+    nv_capnhat = view.selection()
+    if nv_capnhat:
+        nv_in4 = view.item(nv_capnhat)['values']
+        with open('employees.csv', mode='r', newline='') as file_csv:
+            reader = csv.reader(file_csv)
+            for row in reader:
+                if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
+                    # Tạo dialog box
+                    dialog = tk.Toplevel()
+                    dialog.title("Cập nhật thông tin nhân viên")
+                    dialog.geometry("400x300")
+
+                    # Tạo các widget trong dialog box
+                    tk.Label(dialog, text="First Name:").grid(row=0, column=0, padx=5, pady=5)
+                    tk.Label(dialog, text="Last Name:").grid(row=1, column=0, padx=5, pady=5)
+                    tk.Label(dialog, text="Email:").grid(row=2, column=0, padx=5, pady=5)
+
+                    fn_entry = tk.Entry(dialog, width=30)
+                    fn_entry.insert(0, row[0])
+                    fn_entry.grid(row=0, column=1, padx=5, pady=5)
+                    ln_entry = tk.Entry(dialog, width=30)
+                    ln_entry.insert(0, row[1])
+                    ln_entry.grid(row=1, column=1, padx=5, pady=5)
+                    email_entry = tk.Entry(dialog, width=30)
+                    email_entry.insert(0, row[2])
+                    email_entry.grid(row=2, column=1, padx=5, pady=5)
+
+                    # Tạo button để lưu thông tin nhân viên
+                    def save_changes():
+                        row[0] = fn_entry.get()
+                        row[1] = ln_entry.get()
+                        row[2] = email_entry.get()
+                        with open('employees.csv', mode='w', newline='') as file_csv:
+                            writer = csv.writer(file_csv)
+                            for r in reader:
+                                if r[0] == row[0] and r[1] == row[1]:
+                                    writer.writerow(row)
+                                else:
+                                    writer.writerow(r)
+                        messagebox.showinfo("Thông báo", "Thông tin nhân viên đã được cập nhật thành công!")
+                        dialog.destroy()
+                    tk.Button(dialog, text="Lưu", command=save_changes).grid(row=3, column=1, pady=10)
+                    tk.Button(dialog, text="Hủy", command=dialog.destroy).grid(row=3, column=2, pady=10)
+
 root = tk.Tk()
+root.title("Danh sách nhân viên")
 root.state("zoomed")
-delete_button = tk.Button(root, text="Xóa", command=xoanv)
-delete_button.pack(side="bottom", pady=5)
+
+xoa_button = tk.Button(root, text="Xóa", command=xoanv)
+xoa_button.pack(side="bottom", pady=5)
+capnhat_button = tk.Button(root, text="Cập nhật", command=capnhatnv)
+capnhat_button.pack(side="bottom", pady=5)
 view = ttk.Treeview(root)
+
 
 view["columns"] = ("First Name","Last Name","Email","Phone","Gender","Department","Job Title","Years Of Experience","Salary")
 view.column("#0", stretch= tk.NO, width=0)

@@ -3,8 +3,8 @@ import tkinter as tk
 from tkinter import ttk
 
 root = tk.Tk()
+root.title("Danh sách nhân viên")
 root.state("zoomed")
-
 view = ttk.Treeview()
 
 view["columns"] = ("First Name","Last Name","Email","Phone","Gender","Department","Job Title","Years Of Experience","Salary")
