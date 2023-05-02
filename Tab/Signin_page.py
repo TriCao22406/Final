@@ -10,7 +10,9 @@ root.geometry('925x500+300+100')
 root.resizable(False, False)
 root.configure(bg="#fff")
 
-
+def mainpage():
+    root.destroy()
+    import ThemNhanVien
 def signup_page():
     root.destroy()
     import Signup_page
@@ -32,8 +34,8 @@ def docFileCSV():
             if str(list[i][0]) == user.get():
                 if str(list[i][1]) == password.get():
                     messagebox.showinfo("Sign in", "Sucessfully")
-                    root.destroy()
-                    import ThemNhanVien
+                    mainpage()
+                    break
                 else:
                     messagebox.showerror("Invalid", "invalid password")
                     break
