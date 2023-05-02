@@ -44,15 +44,18 @@ class nhanvien:
 
     @classmethod
     def themnv(cls, nv):
-        if cls.timnv(nv.manv) == -1:
+        if nv.manv == "" or nv.tennv=='' or nv.gioitinh== "---Giới tính---" or nv.hocvan=='' or nv.chucvu == '' or nv.ngaysinh=='' or nv.dienthoai =='' or nv.email =='' or nv.diachi=='':
+            messagebox.showerror("Lỗi", "Phải điền đầy đủ thông tin!")
+        else:
+          if cls.timnv(nv.manv) == -1:
             cls.dsnv.append(nv)
             messagebox.showinfo("tk", "Thêm thành công")
             clear()
             return True
-        else:
+          else:
             messagebox.showerror("Lỗi", "Nhân viên bị trùng id")
             clear()
-        return False
+            return False
 
 
     @classmethod
