@@ -20,7 +20,7 @@ view.heading("Job Title", text="Job Title")
 view.heading("Years Of Experience", text="Years Of Experience")
 view.heading("Salary", text="Salary")
 
-with open('../database/employees.csv', newline="", mode='r') as nv_csv:
+with open('../database/employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
     csv_reader = csv.reader(nv_csv)
     view["height"] = 50
     for row in csv_reader:

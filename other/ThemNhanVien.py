@@ -32,7 +32,6 @@ class nhanvien:
         self.email = email_entry.get()
         self.diachi = diachi_entry.get()
         nhanvien.themnv(self)
-        clear()
 
     @classmethod
     def timnv(cls, manv):
