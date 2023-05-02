@@ -156,7 +156,7 @@ class DanhSach(tk.Frame):
         self.button_frame.pack(side="bottom", pady=5)
         self.xoa_button = tk.Button(self.button_frame, text="Xóa", command=self.xoanv)
         self.xoa_button.pack(side="left", pady=5, padx=5)
-        self.capnhat_button = tk.Button(self.button_frame, text="Cập nhật", command=self.capnhatnv)
+        self.capnhat_button = tk.Button(self.button_frame, text="Cập nhật", command=self.xoanv)
         self.capnhat_button.pack(side="right", pady=5, padx=5)
         view["columns"] = (
             "First Name", "Last Name", "Email", "Phone", "Gender", "Department", "Job Title", "Years Of Experience",
