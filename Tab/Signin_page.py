@@ -18,7 +18,7 @@ def signup_page():
 
 
 def docFileCSV():
-    e = r"datalogin.csv"
+    e = r"C:\Users\Admin\OneDrive\Tài liệu\GitHub\Final\database\datalogin.csv"
     with open(e, newline="") as csv_file:
         got_reader = csv.reader(csv_file, delimiter=",", quoting=csv.QUOTE_NONE)
         i = 0
@@ -33,7 +33,7 @@ def docFileCSV():
                 if str(list[i][1]) == password.get():
                     messagebox.showinfo("Sign in", "Sucessfully")
                     root.destroy()
-                    home()
+                    import ThemNhanVien
                 else:
                     messagebox.showerror("Invalid", "invalid password")
                     break
