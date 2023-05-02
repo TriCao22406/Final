@@ -1,6 +1,6 @@
 import csv
 import tkinter as tk
-from tkinter import ttk, simpledialog, messagebox
+from tkinter import ttk
 
 # def xoanv():
 #     nv_xoa = view.selection()
@@ -124,6 +124,24 @@ class DanhSach(tk.Frame):
         self.hienthidanhsach()
         self.pack()
 
+    def xoanv(self):
+        nv_xoa = self.view.selection()
+        if nv_xoa:
+            nv_in4 = self.view.item(nv_xoa)['values']
+            self.view.delete(nv_xoa)
+            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+            with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
+                reader = csv.reader(file_csv)
+                rows = list(reader)
+            for i, row in enumerate(rows):
+                if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
+                    del rows[i]
+                    break
+            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+            with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
+                csv_writer = csv.writer(file_csv)
+                csv_writer.writerows(rows)
+
     @classmethod
     def hienthidanhsach(cls):
         root = tk.Tk()
@@ -131,8 +149,8 @@ class DanhSach(tk.Frame):
         root.state("zoomed")
         view = ttk.Treeview(root)
         view["columns"] = (
-        "First Name", "Last Name", "Email", "Phone", "Gender", "Department", "Job Title", "Years Of Experience",
-        "Salary")
+            "First Name", "Last Name", "Email", "Phone", "Gender", "Department", "Job Title", "Years Of Experience",
+            "Salary")
         view.column("#0", stretch=tk.NO, width=0)
         view.heading("#0", text="", anchor=tk.W)
         view.heading("First Name", text="First Name")
@@ -160,23 +178,3 @@ class DanhSach(tk.Frame):
         view.pack(fill="both", expand=True)
         view.pack()
         root.mainloop()
-
-
-    def xoanv(self):
-        nv_xoa = self.view.selection()
-        if nv_xoa:
-            nv_in4 = self.view.item(nv_xoa)['values']
-            self.view.delete(nv_xoa)
-            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
-            with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
-                reader = csv.reader(file_csv)
-                rows = list(reader)
-            for i, row in enumerate(rows):
-                if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
-                    del rows[i]
-                    break
-            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
-            with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
-                csv_writer = csv.writer(file_csv)
-                csv_writer.writerows(rows)
-
