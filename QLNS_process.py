@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
+from tkinter import messagebox
 import  csv
 
 class Nhanvien():
@@ -44,9 +45,11 @@ class Window(tk.Frame):
         self.manv_entry.grid(row=1, column=1)
 
         tk.Label(self, text="Giới tính:",bg="#66CCFF",fg="black",width =12).grid(row=1, column=2,pady=5,padx=5)
-        self.gt_combobox = ttk.Combobox(self, values=["Nam", "Nữ"], )
-        self.gt_combobox.set("Nam")
+        self.gioitinh_check = tk.StringVar()
+        self.gt_options = ["Nam", "Nữ"]
+        self.gt_combobox = ttk.Combobox(self, values=self.gt_options,textvariable=self.gioitinh_check)
         self.gt_combobox.grid(row=1, column=3)
+
 
         tk.Label(self, text="Tên nhân viên:",bg="#66CCFF",fg="black",width =12).grid(row=2, column=0,pady=5,padx=5)
         self.tennv_entry = tk.Entry(self)
@@ -86,11 +89,13 @@ class Window(tk.Frame):
         self.bophan_entry.grid(row=8,column=1,pady=5)
 
         tk.Label(self, text="Phụ cấp:",bg='#66CCFF',fg="black",width =12).grid(row=8, column=2, pady=5)
-        self.phucap = tk.Checkbutton(self)
+        self.phucap_check = tk.BooleanVar()
+        self.phucap = tk.Checkbutton(self,variable=self.phucap_check)
         self.phucap.place(x=350,y=240)
 
         tk.Label(self, text="BHXH:", bg='#66CCFF', fg="black", width=12).grid(row=8, column=3, pady=5)
-        self.BHXH = tk.Checkbutton(self)
+        self.BHXH_check = tk.BooleanVar()
+        self.BHXH = tk.Checkbutton(self,variable=self.BHXH_check)
         self.BHXH.place(x=500, y=240)
 
         tk.Label(self, text="Nơi làm việc:",bg='#66CCFF',fg="black",width =12).grid(row=9, column=0,pady=5)
@@ -98,11 +103,13 @@ class Window(tk.Frame):
         self.noilamviec_entry.grid(row=9, column=1)
 
         tk.Label(self, text="Trợ cấp:", bg='#66CCFF', fg="black", width=12).grid(row=9, column=2, pady=5)
-        self.trocap = tk.Checkbutton(self)
+        self.trocap_check = tk.BooleanVar()
+        self.trocap = tk.Checkbutton(self,variable=self.trocap_check)
         self.trocap.place(x=350, y=270)
 
         tk.Label(self, text="Lương tháng 13:", bg='#66CCFF', fg="black", width=12).grid(row=9, column=3, pady=5)
-        self.luong13= tk.Checkbutton(self)
+        self.luong13_check = tk.BooleanVar()
+        self.luong13= tk.Checkbutton(self,variable=self.luong13_check)
         self.luong13.place(x=500, y=270)
 
         tk.Label(self, text="Bậc lương:",bg='#66CCFF',fg="black",width =12).grid(row=10, column=0,pady=5)
@@ -110,13 +117,16 @@ class Window(tk.Frame):
         self.spinbox.grid(row=10, column=1)
 
         tk.Label(self, text="BHYT:", bg='#66CCFF', fg="black", width=12).grid(row=10, column=2, pady=5)
-        self.BHYT = tk.Checkbutton(self)
+        self.BHYT_check = tk.BooleanVar()
+        self.BHYT = tk.Checkbutton(self,variable=self.BHYT_check)
         self.BHYT.place(x=350, y=300)
 
         tk.Label(self, text="Lương cơ bản:",bg='#66CCFF',fg="black",width =12).grid(row=11, column=0, pady=5)
         self.luong_entry = tk.Entry(self)
         self.luong_entry.grid(row=11, column=1)
-        self.combobox = ttk.Combobox(self,values=["VNĐ","USD"])
+        self.tiente_check = tk.StringVar()
+        self.tiente_options = ["VNĐ","USD"]
+        self.combobox = ttk.Combobox(self,values=self.tiente_options,textvariable=self.tiente_check)
         self.combobox.set("VNĐ")
         self.combobox.grid(row=11,column=2)
 
@@ -136,7 +146,7 @@ class Window(tk.Frame):
         manv = self.manv_entry.get()
         tennv = self.tennv_entry.get()
         ngaysinh = self.ngaysinh_entry.get()
-        gt = self.gt_combobox
+        gt = self.gioitinh_check.get()
         sdt = self.sdt_entry.get()
         email = self.email_entry.get()
         diachi = self.diachi_entry.get()
@@ -145,14 +155,14 @@ class Window(tk.Frame):
         diachi = self.diachi_entry.get()
         bophan = self.bophan_entry.get()
         noilamviec = self.noilamviec_entry.get()
-        Bacluong = self.spinbox
+        Bacluong = self.spinbox.get()
         luongcoban = self.luong_entry.get()
-        Donvitiente = self.combobox
-        Phucap = self.phucap
-        Trocap = self.trocap
-        BHYT = self.BHYT
-        BHXH = self.BHXH
-        luongthang13 = self.luong13
+        Donvitiente = self.tiente_check.get()
+        Phucap = self.phucap_check.get()
+        Trocap = self.trocap_check.get()
+        BHYT = self.BHYT_check.get()
+        BHXH = self.BHXH_check.get()
+        luongthang13 = self.luong13_check.get()
 
 
         #tạo nhân viên mới
@@ -161,12 +171,13 @@ class Window(tk.Frame):
         # kiểm tra sự trùng lặp
         for e in self.nhanvien:
             if e.manv == nvm.manv:
-                print("Nhân viên với mã {} đã tồn tại!".format(manv))
+                self.show = messagebox.showerror("Lỗi","Nhân viên với mã {} đã tồn tại!".format(manv), parent = root)
+
                 return
 
         # thêm nhân viên mới vào trong danh sách và trong file csv
         self.nhanvien.append(nvm)
-        with open("employees.csv", "a", newline='',encoding="utf-8") as csvfile:
+        with open("database\employees.csv", "a", newline='',encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([
                 nvm.manv,
@@ -190,7 +201,8 @@ class Window(tk.Frame):
                 nvm.luongthang13,
 
             ])
-        print("Lưu thông tin thành công!")
+        self.show1 = messagebox.showinfo("Thành công","Thông tin nhân viên đã được lưu")
+
 
 
 root = tk.Tk()
@@ -199,7 +211,7 @@ root.geometry('900x500+200+100')
 root.resizable(False, False)
 
 
-app = Window(master=root,)
+app = Window(master=root)
 
 app.mainloop()
 
