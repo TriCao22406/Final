@@ -4,19 +4,19 @@ import csv
 class CoCau(tk.Frame):
     def __init__(self, master=None):
         super().__init__()
-        canvas = CanvasLine(self)
-        canvas.pack(fill="both", expand=1)
+        self.canvas = CanvasLine(self)
+        self.canvas.pack(fill="both", expand=1)
 
         #Top server
-        fr1 = tk.Frame(self,canvas)
+        fr1 = tk.Frame(self.canvas)
         fr1.pack(side=tk.TOP,pady=20, padx=10)
 
         #top 2
-        fr2 = tk.Frame(self,canvas)
+        fr2 = tk.Frame(self.canvas)
         fr2.pack(side=tk.TOP,pady=20, padx=10)
 
         #top 3
-        fr3 = tk.Frame(self,canvas)
+        fr3 = tk.Frame(self.canvas)
         fr3.pack(side=tk.TOP, pady=20, padx=10)
 
         # Create node widgets
@@ -24,8 +24,9 @@ class CoCau(tk.Frame):
         level2 = node(fr2, 2)
         level3 = node(fr3, 3)
 
-        canvas.after(200, canvas.draw_line)
-        canvas.bind("<Button-1>", canvas.print_coords)
+    def draw_line_cond(self):
+        self.canvas.draw_line()
+        # canvas.bind("<Button-1>", canvas.print_coords)
 
 #tạo nhiều nút hiển thị tên và chức vụ của các NV 1 cấp
 class node:
@@ -41,7 +42,7 @@ class node:
         return f"{self.data[i][1]}\n{self.data[i][3]}"
 
     def get_data(self):
-        with open('/database/bangiamdoc.csv', newline="", mode='r', encoding='utf-8') as csv_file:
+        with open('../database/bangiamdoc.csv', newline="", mode='r', encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=",", quoting=csv.QUOTE_NONE)
             data = list(reader)
             filtered_data = []
@@ -83,7 +84,8 @@ class CanvasLine(tk.Canvas):
             for child in sub_children:
                 indx += 1
                 x = child.winfo_rootx() + child.winfo_width() / 2
-                y = child.winfo_rooty() + child.winfo_height() / 2
+                y = child.winfo_rooty() - 5
+                print(x,y)
                 if i == 1:
                     self.create_line(x, y, x, y + 20)
                 elif i == len(children):
@@ -93,7 +95,7 @@ class CanvasLine(tk.Canvas):
                     else:
                         self.create_line(first, y - 20, x, y - 20)
                 else:
-                    self.create_line(x, y + 10, x, y - child.winfo_height() - 20)
+                    self.create_line(x, y + 20, x, y - child.winfo_height() - 20)
                     if indx == 1:
                         first = x
                     else:

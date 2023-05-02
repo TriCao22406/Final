@@ -13,7 +13,6 @@ class home(tk.Frame):
         entry1= tk.Entry(self,width=30, font=("Microsoft YaHei UI Light", 10, "bold"), fg="black", bg="white")
         entry1.grid(column=0,row=1)
         button2.grid(column=0,row=2)
-        self.mainloop()
 
     def themnv_page(self):
         self.destroy()

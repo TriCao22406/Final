@@ -226,7 +226,7 @@ class Window():
         #tạo frame chứa ảnh
         width = 200
         height = 280
-        self.img = Image.open(rb"E:\Download\avt.png")
+        self.img = Image.open(r"..\Final\images\avt.png")
         self.photoImg = ImageTk.PhotoImage(self.img)
         self.anh = tk.Label(master,image=self.photoImg, width=300)
         self.anh.place(x=670, y=110)
@@ -278,7 +278,7 @@ class Window():
         # kiểm tra sự trùng lặp
         for e in self.nhanvien:
             if e.manv == nvm.manv:
-                self.show = messagebox.showerror("Lỗi","Nhân viên với mã {} đã tồn tại!".format(manv), parent = root)
+                self.show = messagebox.showerror("Lỗi","Nhân viên với mã {} đã tồn tại!".format(manv))
                 return
 
         # thêm nhân viên mới vào trong danh sách và trong file csv
@@ -305,14 +305,6 @@ class Window():
         self.show1 = messagebox.showinfo("Thành công","Thông tin nhân viên đã được lưu")
 
 
-
-
-
-root = tk.Tk()
-app = Window(root)
-
-
-root.mainloop()
 
 
 
