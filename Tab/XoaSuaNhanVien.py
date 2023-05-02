@@ -119,16 +119,17 @@ from tkinter import ttk, simpledialog, messagebox
 class DanhSach(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
-        self.master = master
-        self.master.title("Danh sách nhân viên")
-        self.master.state("zoomed")
+        self.tree = ttk.Treeview(self)
+        self.tree.pack()
         self.hienthidanhsach()
-
+        self.pack()
 
     @classmethod
     def hienthidanhsach(cls):
-        view = ttk.Treeview()
-
+        root = tk.Tk()
+        root.title("Danh sách nhân viên")
+        root.state("zoomed")
+        view = ttk.Treeview(root)
         view["columns"] = (
         "First Name", "Last Name", "Email", "Phone", "Gender", "Department", "Job Title", "Years Of Experience",
         "Salary")
@@ -157,7 +158,8 @@ class DanhSach(tk.Frame):
         view.configure()
         scrollbar_ngang.pack(fill="x", side="bottom")
         view.pack(fill="both", expand=True)
-
+        view.pack()
+        root.mainloop()
 
 
     def xoanv(self):
@@ -177,3 +179,4 @@ class DanhSach(tk.Frame):
             with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
                 csv_writer = csv.writer(file_csv)
                 csv_writer.writerows(rows)
+
