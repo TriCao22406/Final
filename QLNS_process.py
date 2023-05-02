@@ -212,7 +212,7 @@ class Window():
 #         self.luu_button = tk.Button(master, text="Lưu thông tin",bg="#FF6A6A", command=self.themnv)
 #         self.luu_button.place(x=220,y=390)
 #
-# #đoạn nàydđnag làm lại
+# #đoạn nàydđnag làm lại chưa xong nữa
 #         self.thoat_button = tk.Button(master, text="Thoát",bg="#EEDC82", command=master)
 #         self.thoat_button.grid(row=13,column=3,columnspan=2,pady=10,padx=10)
 
