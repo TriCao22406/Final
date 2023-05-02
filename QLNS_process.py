@@ -4,6 +4,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import  csv
 
+
 class Nhanvien():
    def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu):
       self.manv = manv
