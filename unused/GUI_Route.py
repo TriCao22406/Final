@@ -1,8 +1,4 @@
-"""
-module chính, có tác dụng điều hướng tới các cửa sổ khác nhau
-"""
 import tkinter as tk
-
 
 
 class App(tk.Tk):

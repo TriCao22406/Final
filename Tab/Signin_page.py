@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import csv
-from Home_page import home
-
+from Tab.Home_page import home
 
 
 def login_page(root):
