@@ -1,7 +1,6 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
-import csv
 from tkinter import messagebox
 
 root = tk.Tk()
@@ -46,6 +45,7 @@ class nhanvien:
     def themnv(cls, nv):
         if nv.manv == "" or nv.tennv=='' or nv.gioitinh== "---Giới tính---" or nv.hocvan=='' or nv.chucvu == '' or nv.ngaysinh=='' or nv.dienthoai =='' or nv.email =='' or nv.diachi=='':
             messagebox.showerror("Lỗi", "Phải điền đầy đủ thông tin!")
+            return False
         else:
           if cls.timnv(nv.manv) == -1:
             cls.dsnv.append(nv)
@@ -132,8 +132,11 @@ class nhanvien:
             cls.dsnv[t['idx']].dienthoai = sdt_entry.get()
             cls.dsnv[t['idx']].email = email_entry.get()
             cls.dsnv[t['idx']].diachi = diachi_entry.get()
-            messagebox.showinfo("tk", 'Hoàn thành quá trình cập nhật')
-            clear()
+            if cls.dsnv[t['idx']].manv == "" or cls.dsnv[t['idx']].tennv == '' or cls.dsnv[t['idx']].gioitinh == "---Giới tính---" or cls.dsnv[t['idx']].hocvan == '' or cls.dsnv[t['idx']].chucvu == '' or cls.dsnv[t['idx']].ngaysinh == '' or cls.dsnv[t['idx']].dienthoai == '' or cls.dsnv[t['idx']].email == '' or cls.dsnv[t['idx']].diachi == '':
+                messagebox.showerror("Lỗi", "Phải điền đầy đủ thông tin!")
+            else:
+                messagebox.showinfo("tk", 'Hoàn thành quá trình cập nhật')
+                clear()
             return True
 
 
