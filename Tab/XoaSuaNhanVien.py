@@ -117,6 +117,38 @@ class DanhSach(tk.Frame):
                 csv_writer = csv.writer(file_csv)
                 csv_writer.writerows(rows)
 
+    def capnhatnv(self):
+        nv_capnhat = self.view.selection()
+        if nv_capnhat:
+            popup = tk.Toplevel()
+            popup.title("Cập nhật nhân viên")
+            tk.Label(popup, text="First Name").grid(row=0, column=0)
+            tk.Label(popup, text="Last Name").grid(row=1, column=0)
+            tk.Label(popup, text="Email").grid(row=2, column=0)
+            tk.Label(popup, text="Phone").grid(row=3, column=0)
+            tk.Label(popup, text="Gender").grid(row=4, column=0)
+            tk.Label(popup, text="Department").grid(row=5, column=0)
+            tk.Label(popup, text="Job Title").grid(row=6, column=0)
+            tk.Label(popup, text="Years Of Experience").grid(row=7, column=0)
+            tk.Label(popup, text="Salary").grid(row=8, column=0)
+            nv_in4 = self.view.item(nv_capnhat)['values']
+            # Hiển thị giao diện để người dùng cập nhật thông tin
+            # ví dụ: Tạo một cửa sổ popup để nhập thông tin cập nhật
+
+            # Lưu thông tin đã được cập nhật vào file CSV
+            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+            with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
+                reader = csv.reader(file_csv)
+                rows = list(reader)
+            for i, row in enumerate(rows):
+                if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
+                    # Cập nhật thông tin nhân viên
+                    # ví dụ: rows[i][2] = new_email
+                    break
+            with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
+                csv_writer = csv.writer(file_csv)
+                csv_writer.writerows(rows)
+        pass
     def hienthidanhsach(self):
         view = ttk.Treeview(self)
         self.view=view
@@ -124,7 +156,7 @@ class DanhSach(tk.Frame):
         self.button_frame.pack(side="bottom", pady=5)
         self.xoa_button = tk.Button(self.button_frame, text="Xóa", command=self.xoanv)
         self.xoa_button.pack(side="left", pady=5, padx=5)
-        self.capnhat_button = tk.Button(self.button_frame, text="Cập nhật", command=self.xoanv)
+        self.capnhat_button = tk.Button(self.button_frame, text="Cập nhật", command=self.capnhatnv)
         self.capnhat_button.pack(side="right", pady=5, padx=5)
         view["columns"] = (
             "First Name", "Last Name", "Email", "Phone", "Gender", "Department", "Job Title", "Years Of Experience",
@@ -156,4 +188,55 @@ class DanhSach(tk.Frame):
         view.pack(fill="both", expand=True)
         view.pack()
 
+class CapNhatNVPopUp(tk.Toplevel):
+    def __init__(self, parent, nv_in4):
+        super().__init__(parent)
+        self.title("Cập nhật thông tin nhân viên")
+        self.nv_in4 = nv_in4
+
+        # Tạo các label và entry để nhập thông tin cập nhật
+        tk.Label(self, text="First Name:").grid(row=0, column=0, padx=5, pady=5)
+        self.first_name_entry = tk.Entry(self)
+        self.first_name_entry.grid(row=0, column=1)
+        self.first_name_entry.insert(0, self.nv_in4[0])
+
+        tk.Label(self, text="Last Name:").grid(row=1, column=0, padx=5, pady=5)
+        self.last_name_entry = tk.Entry(self)
+        self.last_name_entry.grid(row=1, column=1)
+        self.last_name_entry.insert(0, self.nv_in4[1])
+
+        tk.Label(self, text="Email:").grid(row=2, column=0, padx=5, pady=5)
+        self.email_entry = tk.Entry(self)
+        self.email_entry.grid(row=2, column=1)
+        self.email_entry.insert(0, self.nv_in4[2])
+
+        tk.Label(self, text="Phone:").grid(row=3, column=0, padx=5, pady=5)
+        self.phone_entry = tk.Entry(self)
+        self.phone_entry.grid(row=3, column=1)
+        self.phone_entry.insert(0, self.nv_in4[3])
+
+        tk.Label(self, text="Gender:").grid(row=4, column=0, padx=5, pady=5)
+        self.gender_entry = tk.Entry(self)
+        self.gender_entry.grid(row=4, column=1)
+        self.gender_entry.insert(0, self.nv_in4[4])
+
+        tk.Label(self, text="Department:").grid(row=5, column=0, padx=5, pady=5)
+        self.department_entry = tk.Entry(self)
+        self.department_entry.grid(row=5, column=1)
+        self.department_entry.insert(0, self.nv_in4[5])
+
+        tk.Label(self, text="Job Title:").grid(row=6, column=0, padx=5, pady=5)
+        self.job_title_entry = tk.Entry(self)
+        self.job_title_entry.grid(row=6, column=1)
+        self.job_title_entry.insert(0, self.nv_in4[6])
+
+        tk.Label(self, text="Years Of Experience:").grid(row=7, column=0, padx=5, pady=5)
+        self.years_of_experience_entry = tk.Entry(self)
+        self.years_of_experience_entry.grid(row=7, column=1)
+        self.years_of_experience_entry.insert(0, self.nv_in4[7])
+
+        tk.Label(self, text="Salary:").grid(row=8, column=0, padx=5, pady=5)
+        self.salary_entry = tk.Entry(self)
+        self.salary_entry.grid(row=8, column=1)
+        self.salary_entry.insert(0, self.nv_in4[8])
 
