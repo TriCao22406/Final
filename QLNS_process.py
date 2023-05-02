@@ -3,10 +3,11 @@ import tkinter as tk
 from tkinter import ttk
 from tkcalendar import *
 from tkinter import messagebox
+from PIL import ImageTk,Image
 import  csv
 
 class Nhanvien():
-   def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu):
+   def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,chucvu,hocvan):
       self.manv = manv
       self.tennv = tennv
       self.ngaysinh = ngaysinh
@@ -14,28 +15,24 @@ class Nhanvien():
       self.sdt = sdt
       self.email = email
       self.diachi = diachi
-      self.hocvan = hocvan
       self.chucvu = chucvu
+      self.hocvan = hocvan
 
 class  thongtinluong(Nhanvien):
-   def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu,bophan,noilamviec,Bacluong,luongcoban,Donvitiente,Phucap,BHYT,BHXH,Trocap,luongthang13):
-      super().__init__(manv,tennv,ngaysinh,gt,sdt,email,diachi,hocvan,chucvu)
+   def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,chucvu,hocvan,bophan,Bacluong,luongcoban,BHYT,BHXH,luongthang13):
+      super().__init__(manv,tennv,ngaysinh,gt,sdt,email,diachi,chucvu,hocvan)
       self.bophan= bophan
-      self.noilamviec= noilamviec
       self.bacluong= Bacluong
       self.luongcoban = luongcoban
-      self.phucap= Phucap
       self.BHYT = BHYT
       self.BHXH = BHXH
-      self.trocap= Trocap
-      self.tiente= Donvitiente
       self.luongthang13 = luongthang13
 
 class Window():
     def __init__(self, master, **kwargs):
         self.master = master
         master.title("THÊM NHÂN VIÊN")
-        master.geometry('1000x790+500+300')
+        master.geometry('1000x780+500+300')
         master.resizable(False, False)
 
         self.nhanvien = []
@@ -56,7 +53,7 @@ class Window():
         self.ngaysinh_entry = tk.Entry(master,width=15)
         self.ngaysinh_entry.place(x=160, y=160)
         self.ngaysinh_entry.insert(0, "dd/mm/yyyy")
-        self.ngaysinh_entry.bind("<1>",)   #chỗ này đang bị thiếu một đối số
+        self.ngaysinh_entry.bind("<1>",self.pick_date)
 
         tk.Label(master, text="Giới tính",bg="#66CCFF",fg="black",width =10,anchor="w").place(x=330,y=160)
         self.gioitinh_check = tk.StringVar()
@@ -87,7 +84,7 @@ class Window():
         self.ngayvao_entry = tk.Entry(master, width=15)
         self.ngayvao_entry.place(x=160, y=360)
         self.ngayvao_entry.insert(0, "dd/mm/yyyy")
-        self.ngayvao_entry.bind("<1>",)  # chỗ này đang thiếu một đối số
+        self.ngayvao_entry.bind("<1>",self.pick_date)
 
         tk.Label(master, text="Bộ phận", bg="#66CCFF", fg="black", width=10,anchor="w").place(x=55, y=400)
         self.bophan_entry = tk.Entry(master, width=35)
@@ -134,7 +131,7 @@ class Window():
         self.ngayhuong_entry = tk.Entry(master, width=15)
         self.ngayhuong_entry.place(x=625, y=470)
         self.ngayhuong_entry.insert(0, "dd/mm/yyyy")
-        self.ngayhuong_entry.bind("<1>", )  # chỗ này đang thiếu một đối số
+        self.ngayhuong_entry.bind("<1>",self.pick_date )
 
         tk.Label(master, text="Trả bằng tiền mặt", width=13,anchor="w").place(x=160, y=500)
         self.tratienmat_check = tk.BooleanVar()
@@ -169,13 +166,13 @@ class Window():
         self.ngay_entry = tk.Entry(master,width=15)
         self.ngay_entry.place(x=610, y=560)
         self.ngay_entry.insert(0, "dd/mm/yyyy")
-        self.ngay_entry.bind("<1>", )  #đang thiếu một đối số
+        self.ngay_entry.bind("<1>",self.pick_date )
 
         tk.Label(master, text="Đến ngày:", width=10).place(x=540, y=590)
         self.ngay_entry = tk.Entry(master, width=15)
         self.ngay_entry.place(x=610, y=590)
         self.ngay_entry.insert(0, "dd/mm/yyyy")
-        self.ngay_entry.bind("<1>", )  # đang thiếu một đối số
+        self.ngay_entry.bind("<1>",self.pick_date )
 
         tk.Label(master, text="Bệnh viện:", width=10, anchor="w").place(x=160, y=590)
         self.benhvien_options = ["Bệnh viện Thủ Đức", "Bệnh viện Chợ Rẫy", "Bệnh viên Quân y 175", "Bệnh viện Bệnh nhiệt đới" "Khác"]
@@ -196,98 +193,114 @@ class Window():
         self.ngay_entry = tk.Entry(master, width=15)
         self.ngay_entry.place(x=610, y=630)
         self.ngay_entry.insert(0, "dd/mm/yyyy")
-        self.ngay_entry.bind("<1>", )  # đang thiếu một đối số
+        self.ngay_entry.bind("<1>",self.pick_date )
 
         tk.Label(master, text="Đến ngày:", width=10).place(x=540, y=660)
         self.ngay_entry = tk.Entry(master, width=15)
         self.ngay_entry.place(x=610, y=660)
         self.ngay_entry.insert(0, "dd/mm/yyyy")
-        self.ngay_entry.bind("<1>", )  # đang thiếu một đối số
+        self.ngay_entry.bind("<1>",self.pick_date )
 
         tk.Label(master, text="Nơi cấp:", width=10, anchor="w").place(x=160, y=660)
         self.noicap_entry = tk.Entry(master,width=38)
         self.noicap_entry.place(x=230, y=660)
 
-#tạo các button
-#         self.luu_button = tk.Button(master, text="Lưu thông tin",bg="#FF6A6A", command=self.themnv)
-#         self.luu_button.place(x=220,y=390)
-#
-# #đoạn nàydđnag làm lại chưa xong nữa
-#         self.thoat_button = tk.Button(master, text="Thoát",bg="#EEDC82", command=master)
-#         self.thoat_button.grid(row=13,column=3,columnspan=2,pady=10,padx=10)
+        #mấy cái này cần thêm hàm thực hiện
+        self.luu_button = tk.Button(master, text="Lưu thông tin",bg="#FF6A6A", command=self.themnv)
+        self.luu_button.place(x=290,y=710)
 
-    def pick_date(event):
+        self.luu_button = tk.Button(master, text="Hiển thị thông tin",bg="#FF6A6A", command=self.themnv)
+        self.luu_button.place(x=400,y=710)
+
+        self.luu_button = tk.Button(master, text="Xóa nhân viên", bg="#FF6A6A", command=self.themnv)
+        self.luu_button.place(x=530, y=710)
+
+        self.luu_button = tk.Button(master, text="Cập nhật nhân viên", bg="#FF6A6A", command=self.themnv)
+        self.luu_button.place(x=640, y=710)
+
+
+        #đoạn nàydđnag làm lại chưa xong nữa, cần làm hàm cho nó chạy xong là thoát luôn
+        self.thoat_button = tk.Button(master, text="Thoát",bg="#EEDC82", command=master)
+        self.thoat_button.place(x=850, y=710)
+
+        #tạo frame chứa ảnh
+        width = 200
+        height = 280
+        self.img = Image.open(rb"E:\Download\avt.png")
+        self.photoImg = ImageTk.PhotoImage(self.img)
+        self.anh = tk.Label(master,image=self.photoImg, width=300)
+        self.anh.place(x=670, y=110)
+
+
+#đang lỗi phần chọn ngày
+    def pick_date(sefl):
         global cal, date_window
-        date_window = Toplevel()
-        date_window.grab_set()
-        date_window.title("Chọn ngày")
-        date_window.geometry('250x220+590+370')
-        cal=Calendar(date_window, selectmode="day", date_pattern="mm/dd/y")
-        cal.place(x=0, y=0)
-    #     submit_btn=Button(date_window, text="Submit", command=)
-    #     submit_btn.place(x=80, y=190)
-    # def ngayhuong(self):
-    #     self.dobout_entry.delete(0, END)
-    #     self.dobout_entry.insert(0, cal.get_date())
-    #     date_window.destroy()
-    #
-    #     # ngayhuongLabel = Label(master, text="Ngày hưởng:", fg="black")
-    #     # ngayhuongLabel.place(x=350, y=255)
+        sefl.date_window = Toplevel()
+        sefl.date_window.grab_set()
+        sefl.date_window.title("Chọn ngày")
+        sefl.date_window.geometry('250x220+590+370')
+        sefl.cal=Calendar(date_window, selectmode="day", date_pattern="mm/dd/y")
+        sefl.cal.place(x=0, y=0)
+        sefl.pickdate = cal.get_date()
+        submit_btn=Button(date_window, text="Submit", command=sefl.grap_date)
+        submit_btn.place(x=80, y=190)
+    def grap_date(self):
+        self.ngayhuong_entry.delete(0, END)
+        self.ngayvao_entry.delete(0, END)
+        self.ngay_entry.delete(0,END)
+
+        self.ngayhuong_entry.insert(0, cal.get_date())
+        self.ngayvao_entry.insert(0, cal.get_date())
+        self.ngay_entry.insert(0, cal.get_date())
+        date_window.destroy()
+
 
     def themnv(self):
         manv = self.manv_entry.get()
         tennv = self.tennv_entry.get()
         ngaysinh = self.ngaysinh_entry.get()
         gt = self.gioitinh_check.get()
-        sdt = self.sdt_entry.get()
-        email = self.email_entry.get()
-        #diachi = self.diachi_entry.get()
         hocvan = self.hocvan_entry.get()
         diachi = self.diachi_entry.get()
+        email = self.email_entry.get()
+        sdt = self.sdt_entry.get()
         bophan = self.bophan_entry.get()
+        chucvu = self.chucvu_entry.get()
         Bacluong = self.bacluong_spinbox.get()
         luongcoban = self.luongcoban_check.get()
-        #Donvitiente = self.tiente_check.get()
         BHYT = self.BHYT_check.get()
         BHXH = self.BHXH_check.get()
         luongthang13 = self.luong13_check.get()
 
-
         #tạo nhân viên mới
-        nvm = thongtinluong(manv, tennv, ngaysinh, gt, sdt, email, diachi, hocvan,bophan,Bacluong,luongcoban,BHYT,BHXH,luongthang13)
+        nvm = thongtinluong(manv, tennv, ngaysinh,hocvan,gt,diachi,email,sdt,bophan,chucvu,Bacluong,luongcoban,BHYT,BHXH,luongthang13)
 
         # kiểm tra sự trùng lặp
         for e in self.nhanvien:
             if e.manv == nvm.manv:
                 self.show = messagebox.showerror("Lỗi","Nhân viên với mã {} đã tồn tại!".format(manv), parent = root)
-
                 return
 
         # thêm nhân viên mới vào trong danh sách và trong file csv
         self.nhanvien.append(nvm)
-        with open("employees.csv", "a", newline='',encoding="utf-8") as csvfile:
+        with open("test.csv", "a", newline='',encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([
                 nvm.manv,
                 nvm.tennv,
                 nvm.ngaysinh,
-                nvm.gt,
-                nvm.sdt,
-                nvm.email,
-                nvm.diachi,
                 nvm.hocvan,
-                nvm.chucvu,
+                nvm.gt,
+                nvm.diachi,
+                nvm.email,
+                nvm.sdt,
                 nvm.bophan,
-                nvm.noilamviec,
+                nvm.chucvu,
                 nvm.bacluong,
                 nvm.luongcoban,
-                nvm.tiente,
-                nvm.phucap,
-                nvm.trocap,
                 nvm.BHYT,
                 nvm.BHXH,
                 nvm.luongthang13,
-
             ])
         self.show1 = messagebox.showinfo("Thành công","Thông tin nhân viên đã được lưu")
 
@@ -296,12 +309,8 @@ class Window():
 
 
 root = tk.Tk()
-# root.title("THÊM NHÂN VIÊN")
-# root.geometry('900x500+200+100')
-#root.resizable(False, False)
-
-
 app = Window(root)
+
 
 root.mainloop()
 
