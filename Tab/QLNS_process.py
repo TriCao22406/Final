@@ -205,7 +205,7 @@ class Window():
         self.noicap_entry = tk.Entry(master,width=38)
         self.noicap_entry.place(x=230, y=660)
 
-        #mấy cái này cần thêm hàm thực hiện
+        #mấy cái này cần thêm hàm thực hiện, chưa def hàm
         self.luu_button = tk.Button(master, text="Lưu thông tin",bg="#FF6A6A", command=self.themnv)
         self.luu_button.place(x=290,y=710)
 
@@ -232,7 +232,7 @@ class Window():
         self.anh.place(x=670, y=110)
 
 
-#đang lỗi phần chọn ngày
+#đang lỗi phần chọn ngày, đang kiếm cách sửa
     def pick_date(sefl):
         global cal, date_window
         sefl.date_window = Toplevel()
