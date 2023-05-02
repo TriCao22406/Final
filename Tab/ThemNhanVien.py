@@ -191,5 +191,5 @@ capnhat_button = tk.Button(root, text='cập nhật nhân viên', bg='#FF6A6A', 
 capnhat_button.place(x=285, y=390)
 
 thoat_button = tk.Button(root, text="Thoát", bg="#EEDC82", command=root.destroy)
-thoat_button.place(x=450,y=390)
+thoat_button.place(x=460,y=390)
 root.mainloop()
