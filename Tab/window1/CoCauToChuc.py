@@ -1,21 +1,22 @@
 import tkinter as tk
 import csv
 
-class CoCau:
-    def __init__(self):
-        canvas = CanvasLine()
+class CoCau(tk.Frame):
+    def __init__(self, master=None):
+        super().__init__()
+        canvas = CanvasLine(self)
         canvas.pack(fill="both", expand=1)
 
         #Top server
-        fr1 = tk.Frame(canvas)
+        fr1 = tk.Frame(self,canvas)
         fr1.pack(side=tk.TOP,pady=20, padx=10)
 
         #top 2
-        fr2 = tk.Frame(canvas)
+        fr2 = tk.Frame(self,canvas)
         fr2.pack(side=tk.TOP,pady=20, padx=10)
 
         #top 3
-        fr3 = tk.Frame(canvas)
+        fr3 = tk.Frame(self,canvas)
         fr3.pack(side=tk.TOP, pady=20, padx=10)
 
         # Create node widgets
@@ -40,7 +41,7 @@ class node:
         return f"{self.data[i][1]}\n{self.data[i][3]}"
 
     def get_data(self):
-        with open('D:/Final/Final/database/bangiamdoc.csv', newline="", mode='r', encoding='utf-8') as csv_file:
+        with open('/database/bangiamdoc.csv', newline="", mode='r', encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=",", quoting=csv.QUOTE_NONE)
             data = list(reader)
             filtered_data = []

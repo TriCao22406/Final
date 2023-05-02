@@ -117,10 +117,8 @@ from tkinter import ttk
 # root.mainloop()
 
 class DanhSach(tk.Frame):
-    def __init__(self, master=None):
-        super().__init__(master)
-        self.tree = ttk.Treeview(self)
-        self.tree.pack()
+    def __init__(self, master=None, cnf={}, **kw):
+        super().__init__()
         self.hienthidanhsach()
         self.pack()
 
@@ -141,13 +139,10 @@ class DanhSach(tk.Frame):
             with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
                 csv_writer = csv.writer(file_csv)
                 csv_writer.writerows(rows)
-
-    @classmethod
-    def hienthidanhsach(cls):
-        root = tk.Tk()
-        root.title("Danh sách nhân viên")
-        root.state("zoomed")
-        view = ttk.Treeview(root)
+        
+        
+    def hienthidanhsach(self):
+        view = ttk.Treeview(self)
         view["columns"] = (
             "First Name", "Last Name", "Email", "Phone", "Gender", "Department", "Job Title", "Years Of Experience",
             "Salary")
@@ -163,18 +158,18 @@ class DanhSach(tk.Frame):
         view.heading("Years Of Experience", text="Years Of Experience")
         view.heading("Salary", text="Salary")
 
-        with open('../database/employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
+        with open('../Final/database/employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
             csv_reader = csv.reader(nv_csv)
             view["height"] = 50
             for row in csv_reader:
                 view.insert(parent='', index='end',
                             values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8],))
-        scrollbar_doc = ttk.Scrollbar(root, orient="vertical", command=view.yview)
-        scrollbar_ngang = ttk.Scrollbar(root, orient="horizontal", command=view.xview)
+        scrollbar_doc = ttk.Scrollbar(self, orient="vertical", command=view.yview)
+        scrollbar_ngang = ttk.Scrollbar(self, orient="horizontal", command=view.xview)
         view.configure(yscrollcommand=scrollbar_doc.set, xscrollcommand=scrollbar_ngang.set)
         scrollbar_doc.pack(fill="y", side="right")
         view.configure()
         scrollbar_ngang.pack(fill="x", side="bottom")
         view.pack(fill="both", expand=True)
         view.pack()
-        root.mainloop()
+

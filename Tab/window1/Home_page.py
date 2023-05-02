@@ -1,21 +1,12 @@
 import tkinter as tk
 import Tab.QLNS_process as ns
 
-class home(tk.Tk):
-    def __init__(self):
+class home(tk.Frame):
+    def __init__(self, master=None):
         super().__init__()
-        self.title("trang chủ")
-        self.geometry("300x300")
-        self.resizable(False,False)
 
         button1 = tk.Button(self,border=2,text="Thêm nhân viên",bg='lavender',font=('arial',11,'bold'), command = self.themnv_page)
         button1.grid(column=0,row=0)
-
-        def themnv(root):
-            root.title("THÊM NHÂN VIÊN")
-            root.geometry('900x500+200+100')
-            root.resizable(False, False)
-
 
 
         button2= tk.Button(self,border=2,text="Thông tin nhân viên",bg='lavender',font=('arial',11,'bold'))

@@ -1,14 +1,26 @@
 import tkinter as tk
-
+from tkinter import scrolledtext
 
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.title("Maxwell Co. Ltd")
-        self.state("zoomed")
-        self.resizable(True, True)
+    def change_meta(self,tle,geo):
+        self.title(tle)
+        self.geometry(geo)
 
+    def full_hd(self):
+        self.state("zoomed")
+
+    def elastic(self, ye):
+        if ye == "real":
+            self.resizable(1,1)
+        elif ye == "x":
+            self.resizable(1,0)
+        elif ye == "y":
+            self.resizable(0,1)
+        elif ye == "no":
+            self.resizable(0,0)
 
     def get_width(self):
         return self.winfo_width()

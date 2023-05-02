@@ -1,7 +1,7 @@
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox, ttk
 import csv
-from Tab.Home_page import home
+from Tab.Route import window1
 
 
 def login_page(root):
@@ -26,7 +26,7 @@ def login_page(root):
                     if str(list[i][1]) == password.get():
                         messagebox.showinfo("Sign in", "Sucessfully")
                         root.destroy()
-                        home()
+                        window1()
                     else:
                         messagebox.showerror("Invalid", "invalid password")
                         break
