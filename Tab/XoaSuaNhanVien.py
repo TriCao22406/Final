@@ -140,7 +140,6 @@ class DanhSach(tk.Frame):
                 csv_writer = csv.writer(file_csv)
                 csv_writer.writerows(rows)
         
-        
     def hienthidanhsach(self):
         view = ttk.Treeview(self)
         view["columns"] = (
