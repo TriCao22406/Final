@@ -1,7 +1,6 @@
 from tkinter import *
 import tkinter as tk
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 import  csv
 
 
@@ -178,7 +177,7 @@ class Window(tk.Frame):
 
         # thêm nhân viên mới vào trong danh sách và trong file csv
         self.nhanvien.append(nvm)
-        with open("database\employees.csv", "a", newline='',encoding="utf-8") as csvfile:
+        with open("../database/employees.csv", "a", newline='', encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([
                 nvm.manv,
@@ -204,17 +203,6 @@ class Window(tk.Frame):
             ])
         self.show1 = messagebox.showinfo("Thành công","Thông tin nhân viên đã được lưu")
 
-
-
-root = tk.Tk()
-root.title("THÊM NHÂN VIÊN")
-root.geometry('900x500+200+100')
-root.resizable(False, False)
-
-
-app = Window(master=root)
-
-app.mainloop()
 
 
 
