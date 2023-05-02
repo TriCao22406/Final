@@ -31,40 +31,80 @@ class DanhSach(tk.Frame):
         if nv_capnhat:
             popup = tk.Toplevel()
             popup.title("Cập nhật thông tin nhân viên")
+            popup.geometry('500x500+100+100')
             nv_in4 = self.view.item(nv_capnhat)['values']
             # Hiển thị giao diện để người dùng cập nhật thông tin
-            tk.Label(popup, text="First Name").grid(row=0, column=0)
-            first_name_entry = tk.Entry(popup)
+            tk.Label(popup, text="").grid(row=0, column=0, pady=5)
+            ten = tk.Label(popup, text="Cập nhật thông tin", font=("Times", 16, "bold"), fg="#DD0000")
+            ten.grid(row=1, column=0, columnspan=2)
+            tk.Label(popup, text="").grid(row=2, column=0, pady=5)
+
+            tk.Label(popup, text="First Name").grid(row=3, column=0, padx=30, pady=5)
+            first_name_entry = tk.Entry(popup, width=45)
             first_name_entry.insert(0, nv_in4[0])
-            first_name_entry.grid(row=0, column=1)
-            tk.Label(popup, text="Last Name").grid(row=1, column=0)
-            last_name_entry = tk.Entry(popup)
+            first_name_entry.grid(row=3, column=1)
+            tk.Label(popup, text="Last Name").grid(row=4, column=0, padx=30, pady=5)
+            last_name_entry = tk.Entry(popup, width=45)
             last_name_entry.insert(0, nv_in4[1])
-            last_name_entry.grid(row=1, column=1)
-            tk.Label(popup, text="Email").grid(row=2, column=0)
-            email_entry = tk.Entry(popup)
+            last_name_entry.grid(row=4, column=1)
+            tk.Label(popup, text="Email").grid(row=5, column=0, padx=30, pady=5)
+            email_entry = tk.Entry(popup, width=45)
             email_entry.insert(0, nv_in4[2])
-            email_entry.grid(row=2, column=1)
-            tk.Label(popup, text="Phone").grid(row=3, column=0)
-            tk.Label(popup, text="Gender").grid(row=4, column=0)
-            tk.Label(popup, text="Department").grid(row=5, column=0)
-            tk.Label(popup, text="Job Title").grid(row=6, column=0)
-            tk.Label(popup, text="Years Of Experience").grid(row=7, column=0)
-            tk.Label(popup, text="Salary").grid(row=8, column=0)
+            email_entry.grid(row=5, column=1)
+            tk.Label(popup, text="Phone").grid(row=6, column=0, padx=30, pady=5)
+            phone_entry = tk.Entry(popup, width=45)
+            phone_entry.insert(0, nv_in4[3])
+            phone_entry.grid(row=6, column=1)
+            tk.Label(popup, text="Gender").grid(row=7, column=0, padx=30, pady=5)
+            g_entry = tk.Entry(popup, width=45)
+            g_entry.insert(0, nv_in4[4])
+            g_entry.grid(row=7, column=1)
+            tk.Label(popup, text="Department").grid(row=8, column=0, padx=30, pady=5)
+            d_entry = tk.Entry(popup, width=45)
+            d_entry.insert(0, nv_in4[5])
+            d_entry.grid(row=8, column=1)
+            tk.Label(popup, text="Job Title").grid(row=9, column=0, padx=30, pady=5)
+            j_entry = tk.Entry(popup, width=45)
+            j_entry.insert(0, nv_in4[6])
+            j_entry.grid(row=9, column=1)
+            tk.Label(popup, text="Years Of Experience").grid(row=10, column=0, padx=30, pady=5)
+            y_entry = tk.Entry(popup, width=45)
+            y_entry.insert(0, nv_in4[7])
+            y_entry.grid(row=10, column=1)
+            tk.Label(popup, text="Salary").grid(row=11, column=0, padx=30, pady=5)
+            s_entry = tk.Entry(popup, width=45)
+            s_entry.insert(0, nv_in4[8])
+            s_entry.grid(row=11, column=1)
+            popup.grid_columnconfigure(0, minsize=30)
 
-            # Lưu thông tin đã được cập nhật vào file CSV
-            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
-            with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
-                reader = csv.reader(file_csv)
-                rows = list(reader)
-            for i, row in enumerate(rows):
-                if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
-                    # Cập nhật thông tin nhân viên
+            def capnhat_thongtin():
+                # Lưu thông tin đã được cập nhật vào file CSV
+                a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+                with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
+                    reader = csv.reader(file_csv)
+                    rows = list(reader)
+                for i, row in enumerate(rows):
+                    if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
+                        rows[i][0] = first_name_entry.get()
+                        rows[i][1] = last_name_entry.get()
+                        rows[i][2] = email_entry.get()
+                        rows[i][3] = phone_entry.get()
+                        rows[i][4] = g_entry.get()
+                        rows[i][5] = d_entry.get()
+                        rows[i][6] = j_entry.get()
+                        rows[i][7] = y_entry.get()
+                        rows[i][8] = s_entry.get()
+                        break
+                with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
+                    csv_writer = csv.writer(file_csv)
+                    csv_writer.writerows(rows)
+                self.view.delete(nv_capnhat)
+                self.view.insert("", tk.END, values=(rows[i][0], rows[i][1], rows[i][2], rows[i][3], rows[i][4], rows[i][5], rows[i][6], rows[i][7], rows[i][8]))
+                popup.destroy()
 
-                    break
-            with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
-                csv_writer = csv.writer(file_csv)
-                csv_writer.writerows(rows)
+            tk.Button(popup, text="Lưu thông tin", bg="yellow", fg="red", command=capnhat_thongtin).grid(row=12, column=1, pady=5)
+
+
 
     def hienthidanhsach(self):
         view = ttk.Treeview(self)
