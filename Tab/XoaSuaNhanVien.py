@@ -2,25 +2,7 @@ import csv
 import tkinter as tk
 from tkinter import ttk
 
-# def xoanv():
-#     nv_xoa = view.selection()
-#     if nv_xoa:
-#         nv_in4 = view.item(nv_xoa)['values']
-#         view.delete(nv_xoa)
-#         a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
-#         with open(a, mode='r', newline='') as file_csv:
-#             reader = csv.reader(file_csv)
-#             rows = list(reader)
-#         for i, row in enumerate(rows):
-#             if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
-#                 del rows[i]
-#                 break
-#         a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
-#         with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
-#             csv_writer = csv.writer(file_csv)
-#             csv_writer.writerows(rows)
-#         file_csv.close()
-#
+
 # def capnhatnv():
 #     nv_capnhat = view.selection()
 #     if nv_capnhat:
@@ -70,8 +52,6 @@ from tkinter import ttk
 # root.title("Danh sách nhân viên")
 # root.state("zoomed")
 #
-# xoa_button = tk.Button(root, text="Xóa", command=xoanv)
-# xoa_button.pack(side="bottom", pady=5)
 # capnhat_button = tk.Button(root, text="Cập nhật", command=capnhatnv)
 # capnhat_button.pack(side="bottom", pady=5)
 # view = ttk.Treeview(root)
@@ -110,10 +90,7 @@ from tkinter import ttk
 #     next(reader)
 #     for row in reader:
 #         view.insert("", tk.END, values=row)
-#
 # view.pack()
-#
-#
 # root.mainloop()
 
 class DanhSach(tk.Frame):
@@ -143,8 +120,12 @@ class DanhSach(tk.Frame):
     def hienthidanhsach(self):
         view = ttk.Treeview(self)
         self.view=view
-        self.xoa_button = tk.Button(self.master, text="Xóa", command=self.xoanv)
-        self.xoa_button.pack(side="bottom", pady=5)
+        self.button_frame = tk.Frame(self.master)
+        self.button_frame.pack(side="bottom", pady=5)
+        self.xoa_button = tk.Button(self.button_frame, text="Xóa", command=self.xoanv)
+        self.xoa_button.pack(side="left", pady=5, padx=5)
+        self.capnhat_button = tk.Button(self.button_frame, text="Cập nhật", command=self.xoanv)
+        self.capnhat_button.pack(side="right", pady=5, padx=5)
         view["columns"] = (
             "First Name", "Last Name", "Email", "Phone", "Gender", "Department", "Job Title", "Years Of Experience",
             "Salary")
