@@ -139,9 +139,12 @@ class DanhSach(tk.Frame):
             with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
                 csv_writer = csv.writer(file_csv)
                 csv_writer.writerows(rows)
-        
+
     def hienthidanhsach(self):
         view = ttk.Treeview(self)
+        self.view=view
+        self.xoa_button = tk.Button(self.master, text="Xóa", command=self.xoanv)
+        self.xoa_button.pack(side="bottom", pady=5)
         view["columns"] = (
             "First Name", "Last Name", "Email", "Phone", "Gender", "Department", "Job Title", "Years Of Experience",
             "Salary")
@@ -171,4 +174,5 @@ class DanhSach(tk.Frame):
         scrollbar_ngang.pack(fill="x", side="bottom")
         view.pack(fill="both", expand=True)
         view.pack()
+
 
