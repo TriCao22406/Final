@@ -1,11 +1,14 @@
 """
 module run app
 """
-from GUI_Route import App
-import Tab.CoCauToChuc as Tri
+from tkinter import *
+import Tab.Signin_page
 
 if __name__ == "__main__":
-    app = App()
-    app.mainloop()
+    root = Tk()
+
+    Tab.Signin_page.login_page(root)
+
+    root.mainloop()
 
 
