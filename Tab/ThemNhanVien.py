@@ -9,7 +9,16 @@ root.geometry("600x700")
 label1 = tk.Label(root, text="THÔNG TIN NHÂN VIÊN", font=("Times", 20, "bold",), justify=CENTER, fg="#DD0000")
 label1.grid(row=0, column=0, columnspan=4)
 
-
+def clear():
+    manv_entry.delete(0,END)
+    tennv_entry.delete(0,END)
+    hocvan_entry.delete(0,END)
+    chucvu_entry.delete(0,END)
+    ngaysinh_entry.delete(0,END)
+    sdt_entry.delete(0,END)
+    email_entry.delete(0,END)
+    diachi_entry.delete(0,END)
+    gt_combobox.set("---Giới tính---")
 class nhanvien:
     dsnv = []
 
@@ -24,6 +33,7 @@ class nhanvien:
         self.email = email_entry.get()
         self.diachi = diachi_entry.get()
         nhanvien.themnv(self)
+        clear()
 
     @classmethod
     def timnv(cls, manv):
@@ -37,9 +47,11 @@ class nhanvien:
         if cls.timnv(nv.manv) == -1:
             cls.dsnv.append(nv)
             messagebox.showinfo("tk", "Thêm thành công")
+            clear()
             return True
         else:
             messagebox.showerror("Lỗi", "Nhân viên bị trùng id")
+            clear()
         return False
 
 
@@ -85,17 +97,44 @@ class nhanvien:
         create_tree_widget()
 
         root2.mainloop()
+        clear()
     @staticmethod
     def xoanv():
         manv= manv_entry.get()
         t = nhanvien.timnv(manv)
         if t == -1:
             messagebox.showerror("Lỗi", 'Không tìm thấy nhân viên để xóa')
+            clear()
             return False
         else:
             nhanvien.dsnv.pop(t["idx"])
             messagebox.showinfo("tk",'xóa thành công')
+            clear()
             return True
+    @classmethod
+    def capnhatlaithongtin(cls):
+        manv= manv_entry.get()
+        t = nhanvien.timnv(manv)
+        if t ==-1:
+            messagebox.showerror("Lỗi", 'Không tìm thấy nhân viên để cập nhật lại thông tin')
+            clear()
+            return False
+        else:
+            cls.dsnv[t['idx']].manv = manv_entry.get()
+            cls.dsnv[t['idx']].tennv = tennv_entry.get()
+            cls.dsnv[t['idx']].gioitinh = gt_combobox.get()
+            cls.dsnv[t['idx']].hocvan = hocvan_entry.get()
+            cls.dsnv[t['idx']].chucvu = chucvu_entry.get()
+            cls.dsnv[t['idx']].ngaysinh = ngaysinh_entry.get()
+            cls.dsnv[t['idx']].dienthoai = sdt_entry.get()
+            cls.dsnv[t['idx']].email = email_entry.get()
+            cls.dsnv[t['idx']].diachi = diachi_entry.get()
+            messagebox.showinfo("tk", 'Hoàn thành quá trình cập nhật')
+            clear()
+            return True
+
+
+
 
 
 tk.Label(root, text="MSNV:", bg="#66CCFF", fg="black", width=12).grid(row=1, column=0, pady=5, padx=5)
@@ -103,8 +142,8 @@ manv_entry = tk.Entry(root)
 manv_entry.grid(row=1, column=1)
 
 tk.Label(root, text="Giới tính:", bg="#66CCFF", fg="black", width=12).grid(row=1, column=2, pady=5, padx=5)
-gt_combobox = ttk.Combobox(root, values=["Nam", "Nữ"], )
-gt_combobox.set("Nam")
+gt_combobox = ttk.Combobox(root, values=["Nam", "Nữ","---Giới tính---"], )
+gt_combobox.set("---Giới tính---")
 gt_combobox.grid(row=1, column=3)
 
 tk.Label(root, text="Tên nhân viên:", bg="#66CCFF", fg="black", width=12).grid(row=2, column=0, pady=5, padx=5)
@@ -147,8 +186,10 @@ luu_button.place(x=20, y=390)
 hienthi_button = tk.Button(root, text='Hiển thị thông tin', bg='#FF6A6A', command=nhanvien.hienthinv)
 hienthi_button.place(x=100, y=390)
 xoa_button = tk.Button(root, text='xóa nhân viên', bg='#FF6A6A', command=nhanvien.xoanv)
-xoa_button.place(x=170, y=390)
+xoa_button.place(x=200, y=390)
+capnhat_button = tk.Button(root, text='cập nhật nhân viên', bg='#FF6A6A', command=nhanvien.capnhatlaithongtin)
+capnhat_button.place(x=285, y=390)
 
 thoat_button = tk.Button(root, text="Thoát", bg="#EEDC82", command=root.destroy)
-thoat_button.grid(row=13, column=3, columnspan=2, pady=10, padx=10)
+thoat_button.place(x=450,y=390)
 root.mainloop()
