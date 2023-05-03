@@ -7,7 +7,7 @@ root.title("Danh sách nhân viên")
 root.state("zoomed")
 view = ttk.Treeview()
 
-view["columns"] = ("Họ và tên","Email","Số điện thoại","Giới tính","Bộ phận","Vị trí","Số năm kinhn nghiệm","Lương")
+view["columns"] = ("Họ và tên","Email","Số điện thoại","Giới tính","Bộ phận","Vị trí","Số năm kinh nghiệm","Lương")
 view.column("#0", stretch= tk.NO, width=0)
 view.heading("#0", text="", anchor=tk.W)
 view.heading("Họ và tên", text="Họ và tên")
@@ -16,7 +16,7 @@ view.heading("Số điện thoại", text="Số điện thoại")
 view.heading("Giới tính", text="Giới tính")
 view.heading("Bộ phận", text="Bộ phận")
 view.heading("Vị trí", text="Vị trí")
-view.heading("Số năm kinhn nghiệm", text="Số năm kinhn nghiệm")
+view.heading("Số năm kinh nghiệm", text="Số năm kinh nghiệm")
 view.heading("Lương", text="Lương")
 
 with open('../database/employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
