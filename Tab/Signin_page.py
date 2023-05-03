@@ -105,7 +105,8 @@ def login_page(root):
     # tao dong hoi "Do you have an account?" va sign in
 
     Button(frame, text="Sign in", border=0, width=30, pady=7, bg='#57a1f8', fg='white', justify=CENTER,
-           font=('Microsoft YaHei UI Light', 10),command=docFileCSV).place(x=60, y=250)
+    font=('Microsoft YaHei UI Light', 10),command=docFileCSV).place(x=60, y=250)
+
 
     ########
     # label = Label(frame, text='Do you have an account ?', fg='black', font=('Microsoft YaHei UI Light', 10), bg='white',border=0)

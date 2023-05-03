@@ -5,7 +5,7 @@ class App(tk.Tk):
     def __init__(self):
         super().__init__()
 
-    def change_meta(self,tle,geo):
+    def change_meta(self,tle,geo=None):
         self.title(tle)
         self.geometry(geo)
 

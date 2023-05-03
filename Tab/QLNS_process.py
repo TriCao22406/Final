@@ -31,9 +31,6 @@ class  thongtinluong(Nhanvien):
 class Window():
     def __init__(self, master, **kwargs):
         self.master = master
-        master.title("THÊM NHÂN VIÊN")
-        master.geometry('1000x780+500+300')
-        master.resizable(False, False)
 
         self.nhanvien = []
 
@@ -226,7 +223,7 @@ class Window():
         #tạo frame chứa ảnh
         width = 200
         height = 280
-        self.img = Image.open(r"..\Final\images\avt.png")
+        self.img = Image.open(r"D:\Final\Final\images\avt.png")
         self.photoImg = ImageTk.PhotoImage(self.img)
         self.anh = tk.Label(master,image=self.photoImg, width=300)
         self.anh.place(x=670, y=110)
@@ -244,6 +241,7 @@ class Window():
         sefl.pickdate = cal.get_date()
         submit_btn=Button(date_window, text="Submit", command=sefl.grap_date)
         submit_btn.place(x=80, y=190)
+
     def grap_date(self):
         self.ngayhuong_entry.delete(0, END)
         self.ngayvao_entry.delete(0, END)

@@ -1,27 +1,43 @@
 import tkinter as tk
 import Tab.QLNS_process as ns
+from tkinter import ttk
 
 class home(tk.Frame):
-    def __init__(self, master=None):
+    def __init__(self, master=None, cnf={}, **kw):
         super().__init__()
 
+        fr1 = tk.Frame(self, height=30).pack(side=tk.TOP)
+
         button1 = tk.Button(self,border=2,text="Thêm nhân viên",bg='lavender',font=('arial',11,'bold'), command = self.themnv_page)
-        button1.grid(column=0,row=0)
+        button1.pack(side=tk.TOP,pady=10)
 
 
         button2= tk.Button(self,border=2,text="Thông tin nhân viên",bg='lavender',font=('arial',11,'bold'))
         entry1= tk.Entry(self,width=30, font=("Microsoft YaHei UI Light", 10, "bold"), fg="black", bg="white")
-        entry1.grid(column=0,row=1)
-        button2.grid(column=0,row=2)
+        entry1.pack(side=tk.TOP,pady=10)
+        button2.pack(side=tk.TOP,pady=10)
 
-    def themnv_page(self):
-        self.destroy()
+    @staticmethod
+    def themnv_page():
+        ha = tk.Toplevel()
+        ha.title("THÊM NHÂN VIÊN")
+        ha.geometry('1000x750')
+        ha.resizable(1, 1)
 
-        root = tk.Tk()
-        root.title("THÊM NHÂN VIÊN")
-        root.geometry('900x500+200+100')
-        root.resizable(False, False)
 
-        ns.Window(master=root)
+        ns.Window(ha)
+        # canva = tk.Canvas(ha)
+        # scrollbar_doc = ttk.Scrollbar(ha, orient="vertical", command=canva.yview)
+        #
+        # frame = tk.Frame(canva)
+        # ns.Window(frame)
+        # canva.create_window(0, 0, anchor='nw', window=frame)
+        # canva.update_idletasks()
+        #
+        # canva.configure(scrollregion=canva.bbox('all'), yscrollcommand=scrollbar_doc.set)
+        #
+        # canva.pack(fill='both', expand=True, side='left')
+        # scrollbar_doc.pack(fill='y', side='right')
 
+        ha.mainloop()
 
