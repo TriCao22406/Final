@@ -42,7 +42,7 @@ class node:
         return f"{self.data[i][1]}\n{self.data[i][3]}"
 
     def get_data(self):
-        with open('D:/Final/Final/database/bangiamdoc.csv', newline="", mode='r', encoding='utf-8') as csv_file:
+        with open('../Final/database/bangiamdoc.csv', newline="", mode='r', encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=",", quoting=csv.QUOTE_NONE)
             data = list(reader)
             filtered_data = []
@@ -85,7 +85,6 @@ class CanvasLine(tk.Canvas):
                 indx += 1
                 x = child.winfo_rootx() + child.winfo_width() / 2
                 y = child.winfo_rooty() - 5
-                print(x,y)
                 if i == 1:
                     self.create_line(x, y, x, y + 20)
                 elif i == len(children):

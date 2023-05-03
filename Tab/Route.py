@@ -32,5 +32,3 @@ class window1:
     def tab_changed(self,event):
         if self.tab.index(self.tab.select()) == 1:
             self.tab2.after(100, self.tab2.draw_line_cond)
-
-window1()

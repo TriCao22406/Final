@@ -13,7 +13,7 @@ class DanhSach(tk.Frame):
         if nv_xoa:
             nv_in4 = self.view.item(nv_xoa)['values']
             self.view.delete(nv_xoa)
-            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+            a = r"..\Final\database\employees.csv"
             with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
                 reader = csv.reader(file_csv)
                 rows = list(reader)
@@ -130,7 +130,7 @@ class DanhSach(tk.Frame):
         view.heading("Years Of Experience", text="Years Of Experience")
         view.heading("Salary", text="Salary")
 
-        with open('D:/Final/Final/database/employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
+        with open('../Final/database/employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
             csv_reader = csv.reader(nv_csv)
             view["height"] = 50
             for row in csv_reader:

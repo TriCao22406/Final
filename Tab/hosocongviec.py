@@ -245,7 +245,7 @@ combobox1.set("Chọn nơi cấp")
 
 width = 200
 height = 280
-img = Image.open(r"C:\Users\LAPTOP\Downloads\z3718417799627_7046ee92d3b87fb5986ddba484aee57f.jpg")
+img = Image.open(r"../images/avt.png")
 img = img.resize((width, height), Image.ANTIALIAS)
 photoImg = ImageTk.PhotoImage(img)
 b = Label(window, image=photoImg, width=300)

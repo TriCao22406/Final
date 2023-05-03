@@ -4,7 +4,7 @@ from tkinter import ttk
 from tkcalendar import *
 from tkinter import messagebox
 from PIL import ImageTk,Image
-import  csv
+import csv
 
 class Nhanvien():
    def __init__(self,manv,tennv,ngaysinh,gt,sdt,email,diachi,chucvu,hocvan):
@@ -223,7 +223,7 @@ class Window():
         #tạo frame chứa ảnh
         width = 200
         height = 280
-        self.img = Image.open(r"D:\Final\Final\images\avt.png")
+        self.img = Image.open(r"../Final/images/avt.png")
         self.photoImg = ImageTk.PhotoImage(self.img)
         self.anh = tk.Label(master,image=self.photoImg, width=300)
         self.anh.place(x=670, y=110)
