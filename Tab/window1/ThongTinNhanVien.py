@@ -243,6 +243,9 @@ class TrangThongTinCaNhan:
                      messagebox.showerror('Error', 'All fields are required')
               else:
                      pass
+
+
+
 if __name__ == "__main__":
     root = Tk()
 
