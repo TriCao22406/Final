@@ -127,11 +127,11 @@ class Window():
                 nvm.manv,
                 nvm.tennv,
                 nvm.ngaysinh,
-                nvm.gt,
-                nvm.sdt,
                 nvm.email,
+                nvm.sdt,
+                nvm.gt,
+                nvm.bophan.
                 nvm.chucvu,
-                nvm.bophan,
                 nvm.namkinhnghiem,
                 nvm.luong
             ])
