@@ -6,18 +6,17 @@ from PIL import ImageTk, Image
 import csv
 
 class Nhanvien():
-   def __init__(self, manv, tennv, ngaysinh, gt, sdt, email, chucvu, bophan, luong, namkinhnghiem):
+   def __init__(self, manv, tennv, ngaysinh, email, sdt, gt, bophan, chucvu, namkinhnghiem, luong):
       self.manv = manv
       self.tennv = tennv
       self.ngaysinh = ngaysinh
-      self.gt = gt
-      self.sdt = sdt
       self.email = email
-      self.chucvu = chucvu
+      self.sdt = sdt
+      self.gt = gt
       self.bophan = bophan
-      self.luong = luong
+      self.chucvu = chucvu
       self.namkinhnghiem = namkinhnghiem
-
+      self.luong = luong
 
 class Window():
     def __init__(self, master):
@@ -76,8 +75,11 @@ class Window():
         self.luu_button = tk.Button(master, text="Lưu thông tin", bg="#FF6A6A", command=self.themnv)
         self.luu_button.place(x=360, y=500)
 
+        self.lammoi_button = tk.Button(master, text="Làm mới", bg="#FF6A6A", command=self.clear)
+        self.lammoi_button.place(x=460, y=500)
+
         self.thoat_button = tk.Button(master, text="Thoát", bg="#EEDC82", command=self.thoat)
-        self.thoat_button.place(x=460, y=500)
+        self.thoat_button.place(x=560, y=500)
 
         #tạo frame chứa ảnh
         self.img = Image.open(r"C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\images\avt.png")
@@ -89,7 +91,7 @@ class Window():
         nhanvien = []
         #sử dụng một khối try-except để xử lý trường hợp tệp chưa tồn tại
         try:  #Nếu tệp tồn tại, tệp csv được mở bằng hàm open()
-            with open('nhanvien.csv', newline='', encoding='utf-8') as csvfile:
+            with open(r'C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\database\employees.csv', newline='', encoding='utf-8') as csvfile:
                 reader = csv.reader(csvfile)
                 next(reader)  # Dòng next(reader) được sử dụng để bỏ qua hàng tiêu đề chứa tên cột.
                 for row in reader:   #hàm lặp qua các hàng trong tệp csv
@@ -105,13 +107,14 @@ class Window():
         manv = self.manv_entry.get()
         tennv = self.tennv_entry.get()
         ngaysinh = self.ngaysinh_entry.get()
-        gt = self.gioitinh_check.get()
         email = self.email_entry.get()
         sdt = self.sdt_entry.get()
+        gt = self.gioitinh_check.get()
         bophan = self.bophan_entry.get()
         chucvu = self.chucvu_entry.get()
-        luong = self.luong_entry.get()
         namkinhnghiem = self.nam_spinbox.get()
+        luong = self.luong_entry.get()
+
 
         #kiểm tra tất cả các mục đều được điền,  k bo trong
         if manv == "" or tennv == '' or gt == "---Giới tính---" or bophan == '' or chucvu == '' or ngaysinh == '' or sdt == '' or email == '' or luong == '' or namkinhnghiem =='' :
@@ -129,7 +132,7 @@ class Window():
         self.nhanvien.append(nvm)
 
         #thên nhân viên vào trong file csv
-        with open("test.csv", "a", newline='', encoding="utf-8") as csvfile:
+        with open(r"C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\database\employees.csv", "a", newline='', encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([
                 nvm.manv,
