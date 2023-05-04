@@ -116,7 +116,7 @@ class Window():
                 return
 
 
-        #kiểm tra tất cả các mục đều được điền
+        #kiểm tra tất cả các mục đều được điền,  k bo trong
         if manv == "" or tennv == '' or gt == "---Giới tính---" or bophan == '' or chucvu == '' or ngaysinh == '' or sdt == '' or email == '' or luong == '' or namkinhnghiem =='' :
             messagebox.showerror("Lỗi", "Phải điền đầy đủ thông tin!")
             return
