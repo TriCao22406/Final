@@ -39,26 +39,26 @@ class node:
             tk.Button(master, text=self.name_job(i)).grid(row=0, column=i,padx=10)
 
     def name_job(self, i):
-        return f"{self.data[i][1]}\n{self.data[i][3]}"
+        return f"{self.data[i][1]}\n{self.data[i][7]}"
 
     def get_data(self):
-        with open('../Final/database/bangiamdoc.csv', newline="", mode='r', encoding='utf-8') as csv_file:
+        with open('D:/Final/database/employees.csv', newline="", mode='r', encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=",", quoting=csv.QUOTE_NONE)
             data = list(reader)
             filtered_data = []
             if self.cap == 3:
                 for row in data:
-                    if row[3].startswith('trưởng phòng'):
+                    if row[7].endswith('Manager'):
                         filtered_data.append(row)
                 return filtered_data
             elif self.cap == 2:
                 for row in data:
-                    if row[3].startswith('giám đốc'):
+                    if row[7].startswith('giám đốc'):
                         filtered_data.append(row)
                 return filtered_data
             else:
                 for row in data:
-                    if row[3] == "ceo":
+                    if row[7] == "CEO":
                         filtered_data.append(row)
                         return filtered_data
 
@@ -86,19 +86,20 @@ class CanvasLine(tk.Canvas):
                 x = child.winfo_rootx() + child.winfo_width() / 2
                 y = child.winfo_rooty() - 5
                 if i == 1:
-                    self.create_line(x, y, x, y + 20)
-                elif i == len(children):
-                    self.create_line(x, y, x, y - 20)
+                    self.create_line(x, y - 10, x, y + 20)
+                elif i == 2:
+                    self.create_line(x, y + 20, x, y - child.winfo_height() - 20)
                     if indx == 1:
                         first = x
                     else:
-                        self.create_line(first, y - 20, x, y - 20)
+                        self.create_line(first, y - child.winfo_height() - 20, x, y - child.winfo_height() - 20)
                 else:
                     self.create_line(x, y + 20, x, y - child.winfo_height() - 20)
                     if indx == 1:
                         first = x
                     else:
                         self.create_line(first, y - child.winfo_height() - 20, x, y - child.winfo_height() - 20)
+
     @staticmethod
     def print_coords(event):
         x, y = event.x, event.y

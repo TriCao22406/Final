@@ -1,8 +1,8 @@
 mã nv,tên nv,ngày sinh,email,sđt,giới tính,bộ phận,chức vụ,năm kn,lương
-01,Tien Thuy,22-07-1975,joselopez0194@slingacademy.com,+1-971-533-4552x1542,male,Product,Web Developer,2.0,6000.0
-02,Diane Carter,22-04-1962,dianecarter1345@slingacademy.com,881.633.0107,female,Human Resource,HR Manager,13.0,11500.0
-03,Sherry Foster,07-11-1981,sherryfoster2572@slingacademy.com,001-966-861-0065x493,female,Product,Tester,8.0,11000.0
-04,Brenda Fisher,20-06-1977,brendafisher3114@slingacademy.com,001-574-564-4648,female,Product,Project Manager,14.0,17000.0
+102,Tien Thuy,22-07-1975,joselopez0194@slingacademy.com,+1-971-533-4552x1542,male,Product,Web Developer,2.0,6000.0
+103,Diane Carter,22-04-1962,dianecarter1345@slingacademy.com,881.633.0107,female,Human Resource,HR Manager,13.0,11500.0
+104,Sherry Foster,07-11-1981,sherryfoster2572@slingacademy.com,001-966-861-0065x493,female,Product,Tester,8.0,11000.0
+105,Brenda Fisher,20-06-1977,brendafisher3114@slingacademy.com,001-574-564-4648,female,Product,Project Manager,14.0,17000.0
 05,Sharon Hunter,14-05-1954,sharonhunter4898@slingacademy.com,5838355842,female,Product,Machine Learning Engineer,7.0,10500.0
 06,Kimberly Jacobs,29-11-1970,kimberlyjacobs5924@slingacademy.com,053-913-2609,female,Product,Tester,6.0,9000.0
 07,Brianna Marshall,07-03-1972,briannamarshall6448@slingacademy.com,701-932-8553,female,Product,Mobile Developer,3.0,7500.0
@@ -100,3 +100,7 @@ mã nv,tên nv,ngày sinh,email,sđt,giới tính,bộ phận,chức vụ,năm k
 99,Karen Roy,04-05-1961,karenroy148650@slingacademy.com,001-579-003-5317x80657,female,Product,Mobile Developer,1.0,7500.0
 100,Nicole Nguyen,03-10-1956,nicolenguyen149314@slingacademy.com,(601)907-3624x42015,female,Product,Tester,7.0,8500.0
 101,Chelsea Lewis,22-01-1992,chelsealewis150296@slingacademy.com,406-096-8891x1387,female,Product,Web Developer,12.0,13000.0
+01,No 1,01/01/0000,ceo@gmail.com,0987654321,nữ,chief executive team,CEO,40,100000
+03,No 2,01/05/1900,cpo@gmail.com,nam,nam,chief executive team,giám đốc nhân sự,30,45000
+02,No 3 ,29/02/1752,cfo@gmail.com,nữ,nữ,chief executive team,giám đốc tài chính,20,40000
+04,No 4,05/06/0213,cto@gmail.com,nam,nam,chief executive team,giám đốc công nghệ,25,35000
