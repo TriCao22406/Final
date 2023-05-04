@@ -105,7 +105,7 @@ class Window():
         namkinhnghiem = self.nkm_entry.get()
 
         #kiểm tra nhân viên đã tn tại trong ds chưa
-        #cái này nó k chạy, đang xem lại
+        #cái này nó k chạy, đang xem lại nefffff
         for nvm in self.nhanvien:
             if nvm.manv == manv:
                 self.show = messagebox.showerror("Lỗi", "Nhân viên với mã {} đã tồn tại!".format(manv))
