@@ -101,6 +101,6 @@ mã nv,tên nv,ngày sinh,email,sđt,giới tính,bộ phận,chức vụ,năm k
 100,Nicole Nguyen,03-10-1956,nicolenguyen149314@slingacademy.com,(601)907-3624x42015,female,Product,Tester,7.0,8500.0
 101,Chelsea Lewis,22-01-1992,chelsealewis150296@slingacademy.com,406-096-8891x1387,female,Product,Web Developer,12.0,13000.0
 01,No 1,01/01/0000,ceo@gmail.com,0987654321,nữ,chief executive team,CEO,40,100000
-03,No 2,01/05/1900,cpo@gmail.com,nam,nam,chief executive team,giám đốc nhân sự,30,45000
-02,No 3 ,29/02/1752,cfo@gmail.com,nữ,nữ,chief executive team,giám đốc tài chính,20,40000
-04,No 4,05/06/0213,cto@gmail.com,nam,nam,chief executive team,giám đốc công nghệ,25,35000
+03,No 2,01/05/1900,cpo@gmail.com,0987654322,nam,chief executive team,giám đốc nhân sự,30,45000
+02,No 3 ,29/02/1752,cfo@gmail.com,0987654323,nữ,chief executive team,giám đốc tài chính,20,40000
+04,No 4,05/06/0213,cto@gmail.com,0987654325,nam,chief executive team,giám đốc công nghệ,25,35000
