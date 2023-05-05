@@ -39,40 +39,56 @@ class DanhSach(tk.Frame):
             ten.grid(row=1, column=0, columnspan=2)
             tk.Label(popup, text="").grid(row=2, column=0, pady=5)
 
+            tk.Label(popup, text="Mã nhân viên").grid(row=3, column=0, padx=30, pady=5)
+            first_name_entry = tk.Entry(popup, width=45)
+            first_name_entry.insert(0, nv_in4[0])
+            first_name_entry.grid(row=3, column=1)
 
-
-            tk.Label(popup, text="Họ và tên").grid(row=4, column=0, padx=30, pady=5)
+            tk.Label(popup, text="Tên nhân viên").grid(row=4, column=0, padx=30, pady=5)
             last_name_entry = tk.Entry(popup, width=45)
             last_name_entry.insert(0, nv_in4[1])
             last_name_entry.grid(row=4, column=1)
-            tk.Label(popup, text="Email").grid(row=5, column=0, padx=30, pady=5)
-            email_entry = tk.Entry(popup, width=45)
-            email_entry.insert(0, nv_in4[2])
-            email_entry.grid(row=5, column=1)
-            tk.Label(popup, text="Số điện thoại").grid(row=6, column=0, padx=30, pady=5)
-            phone_entry = tk.Entry(popup, width=45)
-            phone_entry.insert(0, nv_in4[3])
-            phone_entry.grid(row=6, column=1)
-            tk.Label(popup, text="Giới tính").grid(row=7, column=0, padx=30, pady=5)
+
+            tk.Label(popup, text="Ngày sinh").grid(row=5, column=0, padx=30, pady=5)
+            ns_entry = tk.Entry(popup, width=45)
+            ns_entry.insert(0, nv_in4[2])
+            ns_entry.grid(row=5, column=1)
+
+            tk.Label(popup, text="Giới tính").grid(row=6, column=0, padx=30, pady=5)
             g_entry = tk.Entry(popup, width=45)
-            g_entry.insert(0, nv_in4[4])
-            g_entry.grid(row=7, column=1)
-            tk.Label(popup, text="Bộ phận").grid(row=8, column=0, padx=30, pady=5)
-            d_entry = tk.Entry(popup, width=45)
-            d_entry.insert(0, nv_in4[5])
-            d_entry.grid(row=8, column=1)
-            tk.Label(popup, text="Vị trí").grid(row=9, column=0, padx=30, pady=5)
-            j_entry = tk.Entry(popup, width=45)
-            j_entry.insert(0, nv_in4[6])
-            j_entry.grid(row=9, column=1)
-            tk.Label(popup, text="Số năm kinh nghiệm").grid(row=10, column=0, padx=30, pady=5)
+            g_entry.insert(0, nv_in4[3])
+            g_entry.grid(row=6, column=1)
+
+            tk.Label(popup, text="Số điện thoại").grid(row=7, column=0, padx=30, pady=5)
+            phone_entry = tk.Entry(popup, width=45)
+            phone_entry.insert(0, nv_in4[4])
+            phone_entry.grid(row=7, column=1)
+
+            tk.Label(popup, text="Email").grid(row=8, column=0, padx=30, pady=5)
+            e_entry = tk.Entry(popup, width=45)
+            e_entry.insert(0, nv_in4[5])
+            e_entry.grid(row=8, column=1)
+
+            tk.Label(popup, text="Bộ phận").grid(row=9, column=0, padx=30, pady=5)
+            b_entry = tk.Entry(popup, width=45)
+            b_entry.insert(0, nv_in4[6])
+            b_entry.grid(row=9, column=1)
+
+            tk.Label(popup, text="Chức vụ").grid(row=10, column=0, padx=30, pady=5)
             y_entry = tk.Entry(popup, width=45)
             y_entry.insert(0, nv_in4[7])
             y_entry.grid(row=10, column=1)
+
             tk.Label(popup, text="Lương").grid(row=11, column=0, padx=30, pady=5)
             s_entry = tk.Entry(popup, width=45)
             s_entry.insert(0, nv_in4[8])
             s_entry.grid(row=11, column=1)
+
+            tk.Label(popup, text="Kinh nghiệm").grid(row=12, column=0, padx=30, pady=5)
+            k_entry = tk.Entry(popup, width=45)
+            k_entry.insert(0, nv_in4[9])
+            k_entry.grid(row=12, column=1)
+
             popup.grid_columnconfigure(0, minsize=30)
 
             def capnhat_thongtin():
@@ -83,14 +99,16 @@ class DanhSach(tk.Frame):
                     rows = list(reader)
                 for i, row in enumerate(rows):
                     if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
-                        rows[i][0] = last_name_entry.get()
-                        rows[i][1] = email_entry.get()
-                        rows[i][2] = phone_entry.get()
+                        rows[i][0] = first_name_entry.get()
+                        rows[i][1] = last_name_entry.get()
+                        rows[i][2] = ns_entry.get()
                         rows[i][3] = g_entry.get()
-                        rows[i][4] = d_entry.get()
-                        rows[i][5] = j_entry.get()
-                        rows[i][6] = y_entry.get()
-                        rows[i][7] = s_entry.get()
+                        rows[i][4] = phone_entry.get()
+                        rows[i][5] = e_entry.get()
+                        rows[i][6] = b_entry.get()
+                        rows[i][7] = y_entry.get()
+                        rows[i][8] = s_entry.get()
+                        rows[i][9] = k_entry.get()
                         break
                 with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
                     csv_writer = csv.writer(file_csv)
@@ -112,23 +130,26 @@ class DanhSach(tk.Frame):
         self.xoa_button.pack(side="left", pady=5, padx=5)
         self.capnhat_button = tk.Button(self.button_frame, text="Cập nhật", command=self.capnhatnv)
         self.capnhat_button.pack(side="right", pady=5, padx=5)
-        view["columns"] = ("Họ và tên", "Email", "Số điện thoại", "Giới tính", "Bộ phận", "Vị trí", "Số năm kinh nghiệm", "Lương")
+        view["columns"] = ("Mã nhân viên","Tên nhân viên", "Ngày sinh", "Giới tính", "Số điện thoại", "Email", "Bộ phận", "Chức vụ", "Lương", "Kinh nghiệm")
         view.column("#0", stretch=tk.NO, width=0)
         view.heading("#0", text="", anchor=tk.W)
-        view.heading("Họ và tên", text="Họ và tên")
-        view.heading("Email", text="Email")
-        view.heading("Số điện thoại", text="Số điện thoại")
+        view.heading("Mã nhân viên", text="Mã nhân viên")
+        view.heading("Tên nhân viên", text="Tên nhân viên")
+        view.heading("Ngày sinh", text="Ngày sinh")
         view.heading("Giới tính", text="Giới tính")
+        view.heading("Số điện thoại", text="Số điện thoại")
+        view.heading("Email", text="Email")
         view.heading("Bộ phận", text="Bộ phận")
-        view.heading("Vị trí", text="Vị trí")
-        view.heading("Số năm kinh nghiệm", text="Số năm kinh nghiệm")
+        view.heading("Chức vụ", text="Chức vụ")
         view.heading("Lương", text="Lương")
+        view.heading("Kinh nghiệm", text="Kinh nghiệm")
+
 
         with open('../Final/database/employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
             csv_reader = csv.reader(nv_csv)
             view["height"] = 50
             for row in csv_reader:
-                view.insert(parent='', index='end',values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7],))
+                view.insert(parent='', index='end',values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9]))
 
         scrollbar_doc = ttk.Scrollbar(self, orient="vertical", command=view.yview)
         scrollbar_ngang = ttk.Scrollbar(self, orient="horizontal", command=view.xview)
