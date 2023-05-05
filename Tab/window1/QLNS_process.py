@@ -164,9 +164,9 @@ class Window():
         self.master.destroy()
 
 
-root = tk.Tk()
-app = Window(root)
-root.mainloop()
+# root = tk.Tk()
+# app = Window(root)
+# root.mainloop()
 
 
 
