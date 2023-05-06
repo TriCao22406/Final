@@ -27,7 +27,7 @@ class TrangThongTinCaNhan:
               lbl_title.place(x=0, y=0, width=1530, height=50)
 
               # logo
-              img_logo = Image.open('../images/nguyen-tac-tuyen-dung-nhan-su-4.jpg')
+              img_logo = Image.open('../Final/images/nguyen-tac-tuyen-dung-nhan-su-4.jpg')
               img_logo = img_logo.resize((50, 50), Image.LANCZOS)
               self.photo_logo = ImageTk.PhotoImage(img_logo)
 

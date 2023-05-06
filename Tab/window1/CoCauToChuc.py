@@ -42,7 +42,7 @@ class node:
         return f"{self.data[i][1]}\n{self.data[i][7]}"
 
     def get_data(self):
-        with open('D:/Final/database/employees.csv', newline="", mode='r', encoding='utf-8') as csv_file:
+        with open('../Final/database/employees.csv', newline="", mode='r', encoding='utf-8') as csv_file:
             reader = csv.reader(csv_file, delimiter=",", quoting=csv.QUOTE_NONE)
             data = list(reader)
             filtered_data = []

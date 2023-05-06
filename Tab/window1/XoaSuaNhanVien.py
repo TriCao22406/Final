@@ -21,13 +21,14 @@ class DanhSach(tk.Frame):
                 if int(row[0]) == int(nv_in4[0]) and str(row[1]) == str(nv_in4[1]):
                     del rows[i+1]
                     break
-            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+            a = r"..\Final\database\employees.csv"
             with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
                 csv_writer = csv.writer(file_csv)
                 csv_writer.writerows(rows)
 
     def capnhatnv(self):
         nv_capnhat = self.view.selection()
+        print(nv_capnhat)
         if nv_capnhat:
             popup = tk.Toplevel()
             popup.title("Cập nhật thông tin nhân viên")
@@ -93,12 +94,13 @@ class DanhSach(tk.Frame):
 
             def capnhat_thongtin():
                 # Lưu thông tin đã được cập nhật vào file CSV
-                a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+                a = r"..\Final\database\employees.csv"
                 with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
                     reader = csv.reader(file_csv)
                     rows = list(reader)
                 for i, row in enumerate(rows[1:]):
                     if int(row[0]) == int(nv_in4[0]) and str(row[1]) == str(nv_in4[1]):
+                        i = i +1
                         rows[i][0] = first_name_entry.get()
                         rows[i][1] = last_name_entry.get()
                         rows[i][2] = ns_entry.get()
@@ -113,8 +115,10 @@ class DanhSach(tk.Frame):
                 with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
                     csv_writer = csv.writer(file_csv)
                     csv_writer.writerows(rows)
-                self.view.item(nv_capnhat, values=(rows[i][0], rows[i][1], rows[i][2], rows[i][3], rows[i][4], rows[i][5], rows[i][6], rows[i][7], rows[i][8], rows[i][9]))
-                popup.destroy()
+                self.view.item(nv_capnhat, values=(
+                rows[i][0], rows[i][1], rows[i][2], rows[i][3], rows[i][4], rows[i][5], rows[i][6], rows[i][7],
+                rows[i][8]))
+
 
             tk.Button(popup, text="Lưu thông tin", bg="yellow", fg="red", command=capnhat_thongtin).grid(row=13, column=1, pady=5)
 
@@ -144,7 +148,7 @@ class DanhSach(tk.Frame):
         view.heading("Lương", text="Lương")
 
 
-        with open(r'C:\Users\HP\Documents\GitHub\Final\database\employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
+        with open(r'..\Final\database\employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
             csv_reader = csv.reader(nv_csv)
             csv_reader = list(csv_reader)
             view["height"] = 50
