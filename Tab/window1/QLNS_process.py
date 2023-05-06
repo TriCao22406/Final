@@ -69,7 +69,7 @@ class Window():
 
         tk.Label(master, text="Kinh nghiệm", bg="#66CCFF", fg="black", width=12, anchor="w").place(x=315, y=320)
         tk.Label(master, text="năm", fg="black").place(x=460, y=320)
-        self.namkinhnghiem = Spinbox(from_=1, to=20, width=3)
+        self.namkinhnghiem = Spinbox(master,from_=1, to=20, width=3)
         self.namkinhnghiem.place(x=420, y=320)
 
         self.luu_button = tk.Button(master, text="Lưu thông tin", bg="#FF6A6A", command=self.themnv)
