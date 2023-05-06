@@ -1,0 +1,20 @@
+ID,Name,Email,Department,D.O.B,Phone Number,Gender,Years of Experience,Address,Salary
+1,Le Thi My Tuyen,tuyen@gmail.com,IT,8/8/2004,38256646,Female,4,Vn,4000
+2,Bui Xuan Mai,mai@gmail.com,HR,12/8/2004,158164621,Female,5,Vn,5000
+3,Cao Minh Tri,tri@gmail.com,SE,3/8/2004,6986464,Male,2,Us,1000
+4,Ho Thu Huong,huong@gmail.com,IT,4/5/2004,64974241,Female,13,Uae,6000
+5,Nguyen Thanh Thuy Tien,tien@gmail.com,HR,19/12/2004,88979794,Female,8,Thailand,8000
+6,Trieu Thi Ha,ha@gmail.com,SE,27/6/2004,157464312,Female,4,Uk,1500
+7,Ngoc Nu,nu@gmail.com,IT,8/8/2004,15412154545,Female,3,Vn,2000
+8,Nguyen Anh,anh@gmail.com,HR,12/8/2004,8875609576,Female,1,Vn,3071.428571
+9,Van phong,phong@gmail.com,SE,3/8/2004,10525691233,Male,5,Us,2857.142857
+10,Ha Nam,nam@gmail.com,IT,4/5/2004,12175772891,Male,2,Uae,2642.857143
+11,Anh Ngoc,ngoc@gmail.com,HR,19/12/2005,13825854548,Female,4,Thailand,510
+12,Alex,alex@gmail.com,SE,27/6/2005,15475936206,Female,7,Uk,120
+13,Dainne,dainne@gmail.com,IT,8/8/2004,17126017863,Male,6,Vn,300
+14,Stuoer,stuoer@gmail.com,HR,12/8/2004,18776099521,Female,1,Vn,2123
+15,Huyen Chip,chip@gmail.com,SE,3/8/2004,20426181178,Female,2,Us,1002
+16,Phuong Thao,thao@gmail.com,IT,4/5/2004,22076262836,Male,3,Uae,5000
+17,Ngoc Ha,nha@gmail.com,HR,19/12/2006,23726344493,Female,1,Thailand,42220
+18,Nhu Tran,tran@gmail.com,SE,27/6/2006,25376426151,Female,1,Uk,2324
+,,,,,,,,,
