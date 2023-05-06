@@ -97,8 +97,8 @@ class DanhSach(tk.Frame):
                 with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
                     reader = csv.reader(file_csv)
                     rows = list(reader)
-                for i, row in enumerate(rows):
-                    if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
+                for i, row in enumerate(rows[1:]):
+                    if int(row[0]) == int(nv_in4[0]) and str(row[1]) == str(nv_in4[1]):
                         rows[i][0] = first_name_entry.get()
                         rows[i][1] = last_name_entry.get()
                         rows[i][2] = ns_entry.get()
@@ -113,8 +113,7 @@ class DanhSach(tk.Frame):
                 with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
                     csv_writer = csv.writer(file_csv)
                     csv_writer.writerows(rows)
-                self.view.delete(nv_capnhat)
-                self.view.insert("", tk.END, values=(rows[i][0], rows[i][1], rows[i][2], rows[i][3], rows[i][4], rows[i][5], rows[i][6], rows[i][7], rows[i][8]))
+                self.view.item(nv_capnhat, values=(rows[i][0], rows[i][1], rows[i][2], rows[i][3], rows[i][4], rows[i][5], rows[i][6], rows[i][7], rows[i][8], rows[i][9]))
                 popup.destroy()
 
             tk.Button(popup, text="Lưu thông tin", bg="yellow", fg="red", command=capnhat_thongtin).grid(row=13, column=1, pady=5)
