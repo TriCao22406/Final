@@ -1,6 +1,6 @@
 import tkinter as tk
 import Tab.window1.QLNS_process as ns
-import Tab.window1.ThongTinNhanVien as tt
+import other.ThongTinNhanVien as tt
 class home(tk.Frame):
     def __init__(self, master=None, cnf={}, **kw):
         super().__init__()
