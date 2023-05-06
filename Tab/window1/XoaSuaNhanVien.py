@@ -123,7 +123,7 @@ class DanhSach(tk.Frame):
             tk.Button(popup, text="Lưu thông tin", bg="yellow", fg="red", command=capnhat_thongtin).grid(row=13, column=1, pady=5)
 
     def tailaitrang(self):
-        # Xóa tất cả các dòng cũ trong Treeview
+        # Xóa tất cả các dòng trong Treeview
         for i in self.view.get_children():
             self.view.delete(i)
 
