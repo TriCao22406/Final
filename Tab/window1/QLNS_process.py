@@ -69,8 +69,8 @@ class Window():
 
         tk.Label(master, text="Kinh nghiệm", bg="#66CCFF", fg="black", width=12, anchor="w").place(x=315, y=320)
         tk.Label(master, text="năm", fg="black").place(x=460, y=320)
-        self.nam_spinbox = Spinbox(from_=1, to=20, width=3)
-        self.nam_spinbox.place(x=420, y=320)
+        self.namkinhnghiem = Spinbox(from_=1, to=20, width=3)
+        self.namkinhnghiem.place(x=420, y=320)
 
         self.luu_button = tk.Button(master, text="Lưu thông tin", bg="#FF6A6A", command=self.themnv)
         self.luu_button.place(x=360, y=500)
@@ -82,7 +82,7 @@ class Window():
         self.thoat_button.place(x=560, y=500)
 
         #tạo frame chứa ảnh
-        self.img = Image.open(r"C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\images\avt.png")
+        self.img = Image.open(r"..\Final\images\avt.png")
         self.photoImg = ImageTk.PhotoImage(self.img)
         self.anh = tk.Label(master, image=self.photoImg, width=300)
         self.anh.place(x=590, y=100)
@@ -91,7 +91,7 @@ class Window():
         nhanvien = []
         #sử dụng một khối try-except để xử lý trường hợp tệp chưa tồn tại
         try:  #Nếu tệp tồn tại, tệp csv được mở bằng hàm open()
-            with open(r'C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\database\employees.csv', newline='', encoding='utf-8') as csvfile:
+            with open(r"..\Final\database\employees.csv", newline='', encoding='utf-8') as csvfile:
                 reader = csv.reader(csvfile)
                 next(reader)  # Dòng next(reader) được sử dụng để bỏ qua hàng tiêu đề chứa tên cột.
                 for row in reader:   #hàm lặp qua các hàng trong tệp csv
@@ -112,7 +112,7 @@ class Window():
         gt = self.gioitinh_check.get()
         bophan = self.bophan_entry.get()
         chucvu = self.chucvu_entry.get()
-        namkinhnghiem = self.nam_spinbox.get()
+        namkinhnghiem = self.namkinhnghiem.get()
         luong = self.luong_entry.get()
 
 
@@ -132,7 +132,7 @@ class Window():
         self.nhanvien.append(nvm)
 
         #thên nhân viên vào trong file csv
-        with open(r"C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\database\employees.csv", "a", newline='', encoding="utf-8") as csvfile:
+        with open(r"..\Final\database\employees.csv", "a", newline='', encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([
                 nvm.manv,
@@ -156,7 +156,7 @@ class Window():
         sefl.ngaysinh_entry.delete(0, END)
         sefl.sdt_entry.delete(0, END)
         sefl.email_entry.delete(0, END)
-        sefl.nam_spinbox.delete(0, END)
+        sefl.namkinhnghiem.delete(0, END)
         sefl.bophan_entry.delete(0, END)
         sefl.luong_entry.delete(0, END)
         sefl.gt_combobox.set("---Giới tính---")
