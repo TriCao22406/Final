@@ -1,6 +1,6 @@
 import csv
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 
 class DanhSach(tk.Frame):
     def __init__(self, master=None, cnf={}, **kw):
@@ -13,7 +13,7 @@ class DanhSach(tk.Frame):
         if nv_xoa:
             nv_in4 = self.view.item(nv_xoa)['values']
             self.view.delete(nv_xoa)
-            a = r"..\Final\database\employees.csv"
+            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
             with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
                 reader = csv.reader(file_csv)
                 rows = list(reader)
@@ -118,9 +118,10 @@ class DanhSach(tk.Frame):
                 self.view.item(nv_capnhat, values=(
                 rows[i][0], rows[i][1], rows[i][2], rows[i][3], rows[i][4], rows[i][5], rows[i][6], rows[i][7],
                 rows[i][8]))
-
+                messagebox.showinfo("Cập nhật", "Hoàn tất cập nhật!")
 
             tk.Button(popup, text="Lưu thông tin", bg="yellow", fg="red", command=capnhat_thongtin).grid(row=13, column=1, pady=5)
+
 
 
 
