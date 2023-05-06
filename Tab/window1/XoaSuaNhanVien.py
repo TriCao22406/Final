@@ -17,9 +17,9 @@ class DanhSach(tk.Frame):
             with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
                 reader = csv.reader(file_csv)
                 rows = list(reader)
-            for i, row in enumerate(rows):
-                if row[0] == nv_in4[0] and row[1] == str(nv_in4[1]):
-                    del rows[i]
+            for i, row in enumerate(rows[1:]):
+                if int(row[0]) == int(nv_in4[0]) and str(row[1]) == str(nv_in4[1]):
+                    del rows[i+1]
                     break
             a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
             with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
@@ -147,8 +147,9 @@ class DanhSach(tk.Frame):
 
         with open(r'C:\Users\HP\Documents\GitHub\Final\database\employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
             csv_reader = csv.reader(nv_csv)
+            csv_reader = list(csv_reader)
             view["height"] = 50
-            for row in csv_reader:
+            for row in csv_reader[1:]:
                 view.insert(parent='', index='end',values=(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9]))
 
         scrollbar_doc = ttk.Scrollbar(self, orient="vertical", command=view.yview)
