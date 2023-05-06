@@ -116,8 +116,7 @@ class DanhSach(tk.Frame):
                     csv_writer = csv.writer(file_csv)
                     csv_writer.writerows(rows)
                 self.view.item(nv_capnhat, values=(
-                rows[i][0], rows[i][1], rows[i][2], rows[i][3], rows[i][4], rows[i][5], rows[i][6], rows[i][7],
-                rows[i][8]))
+                rows[i][0], rows[i][1], rows[i][2], rows[i][3], rows[i][4], rows[i][5], rows[i][6], rows[i][7], rows[i][8], rows[i][9]))
                 messagebox.showinfo("Cập nhật", "Hoàn tất cập nhật!")
 
             tk.Button(popup, text="Lưu thông tin", bg="yellow", fg="red", command=capnhat_thongtin).grid(row=13, column=1, pady=5)
