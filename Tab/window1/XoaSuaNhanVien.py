@@ -54,7 +54,7 @@ class DanhSach(tk.Frame):
             ns_entry.insert(0, nv_in4[2])
             ns_entry.grid(row=5, column=1)
 
-            tk.Label(popup, text="Giới tính").grid(row=6, column=0, padx=30, pady=5)
+            tk.Label(popup, text="Email").grid(row=6, column=0, padx=30, pady=5)
             g_entry = tk.Entry(popup, width=45)
             g_entry.insert(0, nv_in4[3])
             g_entry.grid(row=6, column=1)
@@ -64,7 +64,7 @@ class DanhSach(tk.Frame):
             phone_entry.insert(0, nv_in4[4])
             phone_entry.grid(row=7, column=1)
 
-            tk.Label(popup, text="Email").grid(row=8, column=0, padx=30, pady=5)
+            tk.Label(popup, text="Giới tính").grid(row=8, column=0, padx=30, pady=5)
             e_entry = tk.Entry(popup, width=45)
             e_entry.insert(0, nv_in4[5])
             e_entry.grid(row=8, column=1)
@@ -79,12 +79,12 @@ class DanhSach(tk.Frame):
             y_entry.insert(0, nv_in4[7])
             y_entry.grid(row=10, column=1)
 
-            tk.Label(popup, text="Lương").grid(row=11, column=0, padx=30, pady=5)
+            tk.Label(popup, text="Kinh nghiệm").grid(row=11, column=0, padx=30, pady=5)
             s_entry = tk.Entry(popup, width=45)
             s_entry.insert(0, nv_in4[8])
             s_entry.grid(row=11, column=1)
 
-            tk.Label(popup, text="Kinh nghiệm").grid(row=12, column=0, padx=30, pady=5)
+            tk.Label(popup, text="Lương").grid(row=12, column=0, padx=30, pady=5)
             k_entry = tk.Entry(popup, width=45)
             k_entry.insert(0, nv_in4[9])
             k_entry.grid(row=12, column=1)
@@ -117,7 +117,7 @@ class DanhSach(tk.Frame):
                 self.view.insert("", tk.END, values=(rows[i][0], rows[i][1], rows[i][2], rows[i][3], rows[i][4], rows[i][5], rows[i][6], rows[i][7], rows[i][8]))
                 popup.destroy()
 
-            tk.Button(popup, text="Lưu thông tin", bg="yellow", fg="red", command=capnhat_thongtin).grid(row=12, column=1, pady=5)
+            tk.Button(popup, text="Lưu thông tin", bg="yellow", fg="red", command=capnhat_thongtin).grid(row=13, column=1, pady=5)
 
 
 
@@ -130,22 +130,22 @@ class DanhSach(tk.Frame):
         self.xoa_button.pack(side="left", pady=5, padx=5)
         self.capnhat_button = tk.Button(self.button_frame, text="Cập nhật", command=self.capnhatnv)
         self.capnhat_button.pack(side="right", pady=5, padx=5)
-        view["columns"] = ("Mã nhân viên","Tên nhân viên", "Ngày sinh", "Giới tính", "Số điện thoại", "Email", "Bộ phận", "Chức vụ", "Lương", "Kinh nghiệm")
+        view["columns"] = ("Mã nhân viên","Tên nhân viên", "Ngày sinh", "Email", "Số điện thoại", "Giới tính", "Bộ phận", "Chức vụ", "Kinh nghiệm", "Lương")
         view.column("#0", stretch=tk.NO, width=0)
         view.heading("#0", text="", anchor=tk.W)
         view.heading("Mã nhân viên", text="Mã nhân viên")
         view.heading("Tên nhân viên", text="Tên nhân viên")
         view.heading("Ngày sinh", text="Ngày sinh")
-        view.heading("Giới tính", text="Giới tính")
-        view.heading("Số điện thoại", text="Số điện thoại")
         view.heading("Email", text="Email")
+        view.heading("Số điện thoại", text="Số điện thoại")
+        view.heading("Giới tính", text="Giới tính")
         view.heading("Bộ phận", text="Bộ phận")
         view.heading("Chức vụ", text="Chức vụ")
-        view.heading("Lương", text="Lương")
         view.heading("Kinh nghiệm", text="Kinh nghiệm")
+        view.heading("Lương", text="Lương")
 
 
-        with open('../Final/database/employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
+        with open(r'C:\Users\HP\Documents\GitHub\Final\database\employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
             csv_reader = csv.reader(nv_csv)
             view["height"] = 50
             for row in csv_reader:
