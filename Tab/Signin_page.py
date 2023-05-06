@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 import csv
 from Tab.Route import window1
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def login_page(root):
