@@ -82,7 +82,7 @@ class Window():
         self.thoat_button.place(x=560, y=500)
 
         #tạo frame chứa ảnh
-        self.img = Image.open(r"..\Final\images\avt.png")
+        self.img = Image.open(r"C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\images\avt.png")
         self.photoImg = ImageTk.PhotoImage(self.img)
         self.anh = tk.Label(master, image=self.photoImg, width=300)
         self.anh.place(x=590, y=100)
@@ -91,7 +91,7 @@ class Window():
         nhanvien = []
         #sử dụng một khối try-except để xử lý trường hợp tệp chưa tồn tại
         try:  #Nếu tệp tồn tại, tệp csv được mở bằng hàm open()
-            with open(r"..\Final\database\employees.csv", newline='', encoding='utf-8') as csvfile:
+            with open(r'C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\database\employees.csv', newline='', encoding='utf-8') as csvfile:
                 reader = csv.reader(csvfile)
                 next(reader)  # Dòng next(reader) được sử dụng để bỏ qua hàng tiêu đề chứa tên cột.
                 for row in reader:   #hàm lặp qua các hàng trong tệp csv
@@ -132,7 +132,7 @@ class Window():
         self.nhanvien.append(nvm)
 
         #thên nhân viên vào trong file csv
-        with open(r"..\Final\database\employees.csv", "a", newline='', encoding="utf-8") as csvfile:
+        with open(r"C:\Users\Dell\OneDrive\Tài liệu\GitHub\Final\database\employees.csv", "a", newline='', encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow([
                 nvm.manv,
