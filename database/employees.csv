@@ -1,6 +1,6 @@
 mã nv,tên nv,ngày sinh,email,sđt,giới tính,bộ phận,chức vụ,năm kn,lương
 102,Thanh Thuy Tien,25-12-2004,tientien@gmail.com,74763746178,male,Product,Web Developer,1.0,6000.0
-103,Diane Carter,22-04-1962,dianecarter1345@slingacademy.com,881.633.0107,female,Human Resource,HR Manager,13.0,11500.0
+103,Tien Thuy,22-04-1962,dianecarter1345@slingacademy.com,881.633.0107,female,Human Resource,HR Manager,13.0,11500.0
 104,Sherry Foster,07-11-1981,sherryfoster2572@slingacademy.com,001-966-861-0065x493,female,Product,Tester,8.0,11000.0
 105,Brenda Fisher,20-06-1977,brendafisher3114@slingacademy.com,001-574-564-4648,male,Product,Project Manager,14.0,17000.0
 05,Sharon Hunter,14-05-1954,sharonhunter4898@slingacademy.com,5838355842,female,Product,Machine Learning Engineer,7.0,10500.0
@@ -105,3 +105,6 @@ mã nv,tên nv,ngày sinh,email,sđt,giới tính,bộ phận,chức vụ,năm k
 02,No 3 ,29/02/1752,cfo@gmail.com,0987654323,nữ,chief executive team,giám đốc tài chính,20,40000
 04,No 4,05/06/0213,cto@gmail.com,0987654325,nam,chief executive team,giám đốc công nghệ,25,35000
 789,mai,03/07/2004,mai@gmail.com,0779098575786,Nữ,HR, manager,1,4000
+252,Tiên Tiên,25-12-2004,tien@gmail.com,35356134634,Nữ,Product,HR,2,5000
+125,Tien Nguyen,25-12-2004,tientien@gmail.com,42884542,Nữ,Product,HR,1,8000
+251,Tien,25-12-2004,tien@gmail.com,3258578257,Nữ,Không,Không,3,10000

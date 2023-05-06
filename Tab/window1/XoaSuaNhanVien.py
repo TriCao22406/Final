@@ -1,6 +1,7 @@
 import csv
 import tkinter as tk
 from tkinter import ttk, messagebox
+from Tab.window1.QLNS_process import Nhanvien
 
 class DanhSach(tk.Frame):
     def __init__(self, master=None, cnf={}, **kw):
@@ -121,8 +122,18 @@ class DanhSach(tk.Frame):
 
             tk.Button(popup, text="Lưu thông tin", bg="yellow", fg="red", command=capnhat_thongtin).grid(row=13, column=1, pady=5)
 
+    def tailaitrang(self):
+        # Xóa tất cả các dòng cũ trong Treeview
+        for i in self.view.get_children():
+            self.view.delete(i)
 
-
+        # Đọc lại file CSV và hiển thị danh sách mới
+        a = r"..\Final\database\employees.csv"
+        with open(a, mode='r', newline='', encoding='utf-8') as file:
+            reader = csv.reader(file)
+            headers = next(reader)
+            for row in reader:
+                self.view.insert('', 'end', values=row)
 
     def hienthidanhsach(self):
         view = ttk.Treeview(self)
@@ -133,6 +144,8 @@ class DanhSach(tk.Frame):
         self.xoa_button.pack(side="left", pady=5, padx=5)
         self.capnhat_button = tk.Button(self.button_frame, text="Cập nhật", command=self.capnhatnv)
         self.capnhat_button.pack(side="right", pady=5, padx=5)
+        self.tai_button = tk.Button(self.button_frame, text="Tải lại trang", command=self.tailaitrang)
+        self.tai_button.pack(side="right", pady=5, padx=5)
         view["columns"] = ("Mã nhân viên","Tên nhân viên", "Ngày sinh", "Email", "Số điện thoại", "Giới tính", "Bộ phận", "Chức vụ", "Kinh nghiệm", "Lương")
         view.column("#0", stretch=tk.NO, width=0)
         view.heading("#0", text="", anchor=tk.W)
