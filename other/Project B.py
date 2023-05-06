@@ -1,6 +1,9 @@
 from tkinter import *
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
+import pandas as pd
+
+
 
 
 class TrangThongTinCaNhan:
@@ -20,6 +23,7 @@ class TrangThongTinCaNhan:
               self.var_sal = StringVar()
               self.var_addr = StringVar()
               self.var_phone = StringVar()
+              self.var_year = StringVar()
 
               lbl_title = Label(self.root, text='Employ Management System', font=('times new roman', 37, 'bold'),
                                 fg="white",
@@ -27,8 +31,8 @@ class TrangThongTinCaNhan:
               lbl_title.place(x=0, y=0, width=1530, height=50)
 
               # logo
-              img_logo = Image.open('../Final/images/nguyen-tac-tuyen-dung-nhan-su-4.jpg')
-              img_logo = img_logo.resize((50, 50), Image.LANCZOS)
+              img_logo = Image.open('../images/I1.jpg')
+              img_logo = img_logo.resize((50, 50), Image.ANTIALIAS)
               self.photo_logo = ImageTk.PhotoImage(img_logo)
 
               self.logo = Label(self.root, image=self.photo_logo)
@@ -38,24 +42,24 @@ class TrangThongTinCaNhan:
               img_frame.place(x=0, y=50, width=1530, height=160)
 
               # 1st
-              img1 = Image.open('../images/2.jpg')
-              img1 = img1.resize((540, 160), Image.LANCZOS)
+              img1 = Image.open('../images/i3.jpg')
+              img1 = img1.resize((540, 160), Image.ANTIALIAS)
               self.photo1 = ImageTk.PhotoImage(img1)
 
               self.imag_1 = Label(self.root, image=self.photo1)
               self.imag_1.place(x=0, y=0, width=540, height=160)
 
               # 2nd
-              img2 = Image.open('../images/nguyen-tac-tuyen-dung-nhan-su-4.jpg')
-              img2 = img2.resize((540, 160), Image.LANCZOS)
+              img2 = Image.open('../images/i5.jpg')
+              img2 = img2.resize((540, 160), Image.ANTIALIAS)
               self.photo2 = ImageTk.PhotoImage(img2)
 
               self.imag_2 = Label(self.root, image=self.photo2)
               self.imag_2.place(x=540, y=0, width=540, height=160)
 
               # 3rd
-              img3 = Image.open('../images/3.jpg')
-              img3 = img3.resize((540, 160), Image.LANCZOS)
+              img3 = Image.open('../images/I1.jpg')
+              img3 = img3.resize((540, 160), Image.ANTIALIAS)
               self.photo3 = ImageTk.PhotoImage(img3)
 
               self.imag_3 = Label(self.root, image=self.photo3)
@@ -78,7 +82,7 @@ class TrangThongTinCaNhan:
               combo_dep = ttk.Combobox(upper_frame, textvariable=self.var_dep, font=('arial', 12, 'bold'),
                                        width=17,
                                        state='readonly')
-              combo_dep['value'] = ('Select Department', 'HR', 'SE', 'Manager')
+              combo_dep['value'] = ('Select Department', 'HR', 'SE', 'IT')
               combo_dep.current(0)
               combo_dep.grid(row=0, column=1, padx=2, pady=10, sticky=W)
 
@@ -88,7 +92,7 @@ class TrangThongTinCaNhan:
               txt_name = ttk.Entry(upper_frame, textvariable=self.var_Name, font=('arial', 12, 'bold'))
               txt_name.grid(row=0, column=3, padx=2, pady=7)
 
-              # Designation
+              # ID
               lbl_ID = Label(upper_frame, text='ID', font=('arial', 11, 'bold'), bg='white')
               lbl_ID.grid(row=1, column=0, sticky=W, padx=2, pady=7)
               txt_ID = ttk.Entry(upper_frame, textvariable=self.var_ID, font=('arial', 12, 'bold'))
@@ -100,6 +104,13 @@ class TrangThongTinCaNhan:
               txt_email = ttk.Entry(upper_frame, textvariable=self.var_email, font=('arial', 12, 'bold'))
               txt_email.grid(row=1, column=3, padx=2, pady=7)
 
+               # Years of Experience
+              lbl_ye = Label(upper_frame, text='Y.O.E', font=('arial', 11, 'bold'), bg='white')
+              lbl_ye.grid(row=2, column=0, sticky=W, padx=2, pady=7)
+              txt_ye = ttk.Entry(upper_frame, textvariable=self.var_year, font=('arial', 12, 'bold'))
+              txt_ye.grid(row=2, column=1, padx=2, pady=7,sticky=W)
+
+
               # Address
               lbl_addr = Label(upper_frame, text='Address', font=('arial', 11, 'bold'), bg='white')
               lbl_addr.grid(row=3, column=2, sticky=W, padx=2, pady=7)
@@ -110,11 +121,11 @@ class TrangThongTinCaNhan:
               lbl_gen = Label(upper_frame, text='Gender', font=('arial', 11, 'bold'), fg="black", bg='white')
               lbl_gen.grid(row=2, column=2, padx=2, sticky=W)
               combo_gen = ttk.Combobox(upper_frame, textvariable=self.var_gender, font=('arial', 12, 'bold'),
-                                       width=17,\
+                                       width=17, \
                                        state='readonly')
               combo_gen['value'] = ('Male', 'Female', 'Other')
               combo_gen.current(0)
-              combo_gen.grid(row=2, column=3, padx=2, pady=10, sticky=W)
+              combo_gen.grid(row=2, column=3, padx=2, pady=10)
 
               # D.O.B
               lbl_born = Label(upper_frame, text='D.O.B', font=('arial', 11, 'bold'), bg='white')
@@ -133,21 +144,23 @@ class TrangThongTinCaNhan:
               lbl_phone.grid(row=4, column=2, sticky=W, padx=2, pady=7)
               txt_phone = ttk.Entry(upper_frame, textvariable=self.var_phone, width=22,
                                     font=('arial', 12, 'bold'))
-              txt_phone.grid(row=4, column=3, padx=2, pady=7, sticky=W)
+              txt_phone.grid(row=4, column=3, padx=2, pady=7)
 
-              # face ID
-              img = Image.open('../images/images.jpg')
-              img = img.resize((220, 220), Image.LANCZOS)
+              # face
+              img = Image.open('../images/i4.jpg')
+              img = img.resize((500, 220), Image.ANTIALIAS)
               self.photo = ImageTk.PhotoImage(img)
 
               self.imag = Label(upper_frame, image=self.photo)
-              self.imag.place(x=1000, y=0, width=220, height=220)
+              self.imag.place(x=700, y=0, width=500, height=220)
+
+
 
               # Button frame
               button_frame = Frame(upper_frame, bd=2, relief=RIDGE, bg='white')
               button_frame.place(x=1290, y=20, width=170, height=210)
 
-              btn_add = Button(button_frame, text='Save', font=('arial', 15, 'bold'), width=13, bg='white',
+              btn_add = Button(button_frame, text='Save',command=self.add_data(), font=('arial', 15, 'bold'), width=13, bg='white',
                                fg='black')
               btn_add.grid(row=0, column=0, padx=1, pady=5)
 
@@ -170,7 +183,7 @@ class TrangThongTinCaNhan:
 
               # Search frame
               search_frame = LabelFrame(down_frame, bd=2, relief=RIDGE, bg='white',
-                                        text='Search Employee Informaton',
+                                        text='Search Employee Information',
                                         font=('times new roman', 11, 'bold'), fg='darkblue')
               search_frame.place(x=0, y=0, width=1470, height=60)
 
@@ -205,7 +218,7 @@ class TrangThongTinCaNhan:
               scroll_x = ttk.Scrollbar(table_frame, orient=HORIZONTAL)
               scroll_y = ttk.Scrollbar(table_frame, orient=VERTICAL)
 
-              self.employees_table = ttk.Treeview(table_frame, column=('Name', 'ID', 'Dep', 'Email', 'D.O.B', 'Gender','Salary', 'Phone', 'Address'), xscrollcommand=scroll_x.set, yscrollcommand=scroll_y.set)
+              self.employees_table = ttk.Treeview(table_frame,column=('Name', 'ID', 'Dep', 'Email', 'D.O.B', 'Gender','Salary', 'Phone', 'Address','Y.O.E'), xscrollcommand=scroll_x.set, yscrollcommand=scroll_y.set)
 
               scroll_x.pack(side=BOTTOM, fill=X)
               scroll_y.pack(side=RIGHT, fill=Y)
@@ -222,6 +235,7 @@ class TrangThongTinCaNhan:
               self.employees_table.heading('Phone', text='Phone Number')
               self.employees_table.heading('Address', text='Address')
               self.employees_table.heading('Salary', text='Salary')
+              self.employees_table.heading('Y.O.E', text='Years of Experience')
 
               self.employees_table['show'] = 'headings'
 
@@ -233,7 +247,8 @@ class TrangThongTinCaNhan:
               self.employees_table.column('Salary', width=100)
               self.employees_table.column('Gender', width=100)
               self.employees_table.column('Phone', width=100)
-              self.employees_table.column('Address', width=400)
+              self.employees_table.column('Address', width=100)
+              self.employees_table.column('Y.O.E', width=100)
 
               self.employees_table.pack(fill=BOTH, expand=1)
 
@@ -242,11 +257,29 @@ class TrangThongTinCaNhan:
               if self.var_ID.get() == "" or self.var_email.get() == "":
                      messagebox.showerror('Error', 'All fields are required')
               else:
-                     pass
+                     try:
+                            conn=pd.read_csv("../database/dataemployees.csv")
+
+                            new_employee=[self.var_ID.get(),self.var_Name.get(),self.var_email.get(),self.var_dep.get(),self.var_born.get(),self.var_phone.get(),self.var_gender.get(),self.var_year.get(),self.var_addr.get(),self.var_sal.get()]
+                            conn.loc[conn.shape[0]] = new_employee
+                            conn.to_csv("database/dataemployees.csv", index=False)
+
+                            """def hienthinv(cls):
+                                   root2 = tk.Tk()
+                                   root2.title("Hiển thị nhân viên")
+                                   root2.state("zoomed")"""
+                            conn.close()
+                            messagebox.showinfo('Success','Employee has been added', parent=self.root)
+                     except Exception as es:
+                            messagebox.showerror('Error', f'Due To:{str(es)}',parent=self.root)
+
+
+
+
+
+
 
 if __name__ == "__main__":
-    root = Tk()
-
-    TrangThongTinCaNhan(root)
-
-    root.mainloop()
+           root = Tk()
+           obj=TrangThongTinCaNhan(root)
+           root.mainloop()

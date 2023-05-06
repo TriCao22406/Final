@@ -31,7 +31,7 @@ class TrangThongTinCaNhan:
               lbl_title.place(x=0, y=0, width=1530, height=50)
 
               # logo
-              img_logo = Image.open('images/I1.jpg')
+              img_logo = Image.open('../images/I1.jpg')
               img_logo = img_logo.resize((50, 50), Image.ANTIALIAS)
               self.photo_logo = ImageTk.PhotoImage(img_logo)
 
@@ -42,7 +42,7 @@ class TrangThongTinCaNhan:
               img_frame.place(x=0, y=50, width=1530, height=160)
 
               # 1st
-              img1 = Image.open('images/i3.jpg')
+              img1 = Image.open('../images/i3.jpg')
               img1 = img1.resize((540, 160), Image.ANTIALIAS)
               self.photo1 = ImageTk.PhotoImage(img1)
 
@@ -50,7 +50,7 @@ class TrangThongTinCaNhan:
               self.imag_1.place(x=0, y=0, width=540, height=160)
 
               # 2nd
-              img2 = Image.open('images/i5.jpg')
+              img2 = Image.open('../images/i5.jpg')
               img2 = img2.resize((540, 160), Image.ANTIALIAS)
               self.photo2 = ImageTk.PhotoImage(img2)
 
@@ -58,7 +58,7 @@ class TrangThongTinCaNhan:
               self.imag_2.place(x=540, y=0, width=540, height=160)
 
               # 3rd
-              img3 = Image.open('images/I1.jpg')
+              img3 = Image.open('../images/I1.jpg')
               img3 = img3.resize((540, 160), Image.ANTIALIAS)
               self.photo3 = ImageTk.PhotoImage(img3)
 
@@ -147,7 +147,7 @@ class TrangThongTinCaNhan:
               txt_phone.grid(row=4, column=3, padx=2, pady=7)
 
               # face
-              img = Image.open('images/i4.jpg')
+              img = Image.open('../images/i4.jpg')
               img = img.resize((500, 220), Image.ANTIALIAS)
               self.photo = ImageTk.PhotoImage(img)
 
@@ -258,7 +258,7 @@ class TrangThongTinCaNhan:
                      messagebox.showerror('Error', 'All fields are required')
               else:
                      try:
-                            conn=pd.read_csv("database/dataemployees.csv")
+                            conn=pd.read_csv("../database/dataemployees.csv")
 
                             new_employee=[self.var_ID.get(),self.var_Name.get(),self.var_email.get(),self.var_dep.get(),self.var_born.get(),self.var_phone.get(),self.var_gender.get(),self.var_year.get(),self.var_addr.get(),self.var_sal.get()]
                             conn.loc[conn.shape[0]] = new_employee
