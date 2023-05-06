@@ -21,7 +21,7 @@ class DanhSach(tk.Frame):
                 if int(row[0]) == int(nv_in4[0]) and str(row[1]) == str(nv_in4[1]):
                     del rows[i+1]
                     break
-            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+            a = r"..\Final\database\employees.csv"
             with open(a, mode='w', newline='', encoding='utf-8') as file_csv:
                 csv_writer = csv.writer(file_csv)
                 csv_writer.writerows(rows)
@@ -93,7 +93,7 @@ class DanhSach(tk.Frame):
 
             def capnhat_thongtin():
                 # Lưu thông tin đã được cập nhật vào file CSV
-                a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+                a = r"..\Final\database\employees.csv"
                 with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
                     reader = csv.reader(file_csv)
                     rows = list(reader)
@@ -144,7 +144,7 @@ class DanhSach(tk.Frame):
         view.heading("Lương", text="Lương")
 
 
-        with open(r'C:\Users\HP\Documents\GitHub\Final\database\employees.csv', newline="", mode='r', encoding='utf-8') as nv_csv:
+        with open(r"..\Final\database\employees.csv", newline="", mode='r', encoding='utf-8') as nv_csv:
             csv_reader = csv.reader(nv_csv)
             csv_reader = list(csv_reader)
             view["height"] = 50
