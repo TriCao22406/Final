@@ -8,13 +8,14 @@ from Tab.window1.DanhSachNhanVien import DanhSach
 class window1:
     def __init__(self):
         root = App()
-        root.change_meta("Maxwell Co. Ltd")
+        root.change_meta("Maxwell - App quản lý nhân sự nhóm 3")
         root.full_hd()
         root.elastic("real")
 
         self.tab = ttk.Notebook()
 
-        tab1 = home(self.tab)
+        img = tk.PhotoImage(file=r'../Final/images/login.png')
+        tab1 = home(self.tab, image = img)
         self.tab2= CoCau(self.tab)
         tab3 = DanhSach(self.tab)
 
