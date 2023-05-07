@@ -4,8 +4,6 @@ from PIL import Image, ImageTk
 import pandas as pd
 
 
-
-
 class TrangThongTinCaNhan:
        def __init__(self, root):
               self.root = root

@@ -14,7 +14,7 @@ class DanhSach(tk.Frame):
         if nv_xoa:
             nv_in4 = self.view.item(nv_xoa)['values']
             self.view.delete(nv_xoa)
-            a = r"C:\Users\HP\Documents\GitHub\Final\database\employees.csv"
+            a = r"..\Final\database\employees.csv"
             with open(a, mode='r', newline='', encoding='utf-8') as file_csv:
                 reader = csv.reader(file_csv)
                 rows = list(reader)
@@ -138,7 +138,7 @@ class DanhSach(tk.Frame):
     def hienthidanhsach(self):
         view = ttk.Treeview(self)
         self.view=view
-        self.button_frame = tk.Frame(self.master)
+        self.button_frame = tk.Frame(self)
         self.button_frame.pack(side="bottom", pady=5)
         self.xoa_button = tk.Button(self.button_frame, text="Xóa", command=self.xoanv)
         self.xoa_button.pack(side="left", pady=5, padx=5)
