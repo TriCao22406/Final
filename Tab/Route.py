@@ -3,7 +3,7 @@ from tkinter import ttk
 from Tab.GUI import App
 from Tab.window1.Home_page import home
 from Tab.window1.CoCauToChuc import CoCau
-from Tab.window1.XoaSuaNhanVien import DanhSach
+from Tab.window1.DanhSachNhanVien import DanhSach
 
 class window1:
     def __init__(self):
