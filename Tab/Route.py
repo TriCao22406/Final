@@ -14,8 +14,7 @@ class window1:
 
         self.tab = ttk.Notebook()
 
-        img = tk.PhotoImage(file=r'../Final/images/login.png')
-        tab1 = home(self.tab, image = img)
+        tab1 = home(self.tab)
         self.tab2= CoCau(self.tab)
         tab3 = DanhSach(self.tab)
 
